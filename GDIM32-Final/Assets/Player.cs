@@ -46,7 +46,11 @@ public class Player : MonoBehaviour
         }
         
         transform.localEulerAngles = _angles;
-        transform.position = this.transform.position;
-        
+        //transform.position = this.transform.position;
+
+        /*_angles.y = 0; :-(
+        playerTransform.localEulerAngles = _angles;
+        */
+
     }
 }
