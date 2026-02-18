@@ -26,6 +26,15 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        float rotationY = Input.GetAxis("Mouse Y") * _turnSpeed;
+        rotationY = Mathf.Clamp(rotationY, -60.0f, 60.0f);
+
+        float rotationX = Input.GetAxis("Mouse X") * _turnSpeed;
+
+        
+        transform.localEulerAngles = new Vector3(-rotationY, 0, 0 );
+        playerTransform.localEulerAngles = new Vector3(0, -rotationX, 0);
+        
         _horizontal = Input.GetAxisRaw("Horizontal");
         _vertical = Input.GetAxisRaw("Vertical");
         
@@ -33,19 +42,18 @@ public class Player : MonoBehaviour
 
         this.transform.position = playerTransform.position; 
         
-        float rotationY = Input.GetAxis("Mouse Y") * _turnSpeed;
-        float rotationX = Input.GetAxis("Mouse X") * _turnSpeed;
         
-        if (rotationY > 0)
+        
+        /*if (rotationY > 0)
         {
             _angles = new Vector3(Mathf.MoveTowards(_angles.x, -80, rotationY), _angles.y + rotationX, 0);
         }
         else
         {
             _angles = new Vector3(Mathf.MoveTowards(_angles.x, 80, -rotationY), _angles.y + rotationX, 0);
-        }
+        }*/
         
-        transform.localEulerAngles = _angles;
+        
         //transform.position = this.transform.position;
 
         /*_angles.y = 0; :-(
