@@ -91,8 +91,10 @@ public class Player : MonoBehaviour
         _playerRigidbody.velocity = (_horizontalmovement + _forwardmovement) * _moveSpeed;
     }
 
+    // Method for interacting with items 
     private void Interact()
     {
+        // If they already have an item in hand, interacting will drop it on the ground 
         if (_hasItem)
         {
             _itemHeld.Interact(targetPos);
@@ -101,7 +103,8 @@ public class Player : MonoBehaviour
         }
         else
         {
-            Debug.Log("E"); 
+            
+            // If player doesn't have anything in hand, sends out a raycast
             RaycastHit hit;
             if (Physics.Raycast(
                     transform.position, 
@@ -110,11 +113,23 @@ public class Player : MonoBehaviour
                     _raycastDistance,
                     raycastLayers))
             {
+                // If raycast hits something: Fetch its Item component 
                 _itemHeld = hit.collider.GameObject().GetComponent<Item>();
+               
                 Debug.Log("Succeeded raycast check");
                 Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.green, 10);
-                _itemHeld.Interact(targetPos);
-                _hasItem = true; 
+                
+                // Call the item's interact function (the interact function will return "true" if it was picked up, "false" if it wasn't) 
+                bool _successful = _itemHeld.Interact(targetPos);
+                if (_successful)
+                {
+                    _hasItem = true; 
+                }
+                else
+                {
+                    _hasItem = false;
+                    _itemHeld = null; 
+                }
 
             }
             else

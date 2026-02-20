@@ -4,6 +4,9 @@ using UnityEngine;
 
 public abstract class Item : MonoBehaviour
 {
+    // when making an interactable, MAKE SURE TO MARK ITS LAYER 1!1!!!!!
+    
+    // Num of seconds item should take to return to target position
     [SerializeField] private float _timeToCorrect;
 
     protected Transform _targetPos; 
@@ -27,7 +30,8 @@ public abstract class Item : MonoBehaviour
         }
     }
     
-    public virtual void Interact(GameObject target)
+    // Base interact: Player clicks e at it once and it'll pick up. 
+    public virtual bool Interact(GameObject target)
     {
         Debug.Log("Interacted with " + this.name);
         if (!_pickedUp)
@@ -37,6 +41,7 @@ public abstract class Item : MonoBehaviour
             target.transform.position = this.transform.position;
             _targetPos = target.transform; 
             _rigidbody.useGravity = false;
+            return true; 
         }
         else
         {
@@ -44,9 +49,11 @@ public abstract class Item : MonoBehaviour
             _pickedUp = false;
             _targetPos = null; 
             _rigidbody.useGravity = true;
+            return true; 
         }
     }
-
+    
+    // Moves item to its target position when its held by the player. Should only really be changed by the NPCs 
     public virtual void Move()
     {
         float distance = Vector3.Distance(_targetPos.position, this.transform.position);   
