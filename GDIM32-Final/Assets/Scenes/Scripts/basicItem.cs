@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class basicItem : Item
 {
-    // Start is called before the first frame update
+    // This is a child class that doesn't implement anything new from the abstract Item. 
+    // We can use this for all items until we have time to try doing special interactions 
     void Start()
     {
         _rigidbody = this.GetComponent<Rigidbody>();
 
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (_pickedUp)
