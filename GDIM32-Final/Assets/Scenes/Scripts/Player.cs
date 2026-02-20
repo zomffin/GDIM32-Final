@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] Transform playerTransform;
+    [SerializeField] private Transform playerTransform;
+    [SerializeField] private Transform _playerRigidbody; 
 
     [SerializeField] private float _moveSpeed;
     [SerializeField] private float _turnSpeed;
@@ -16,6 +17,9 @@ public class Player : MonoBehaviour
     private Vector3 _angles; 
     private float _horizontal;
     private float _vertical;
+    private Vector3 _horizontalmovement;
+    private Vector3 _forwardmovement; 
+    
     
     // Start is called before the first frame update
     void Start()
@@ -26,39 +30,39 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float rotationY = Input.GetAxis("Mouse Y") * _turnSpeed;
-        rotationY = Mathf.Clamp(rotationY, -60.0f, 60.0f);
+     
 
-        float rotationX = Input.GetAxis("Mouse X") * _turnSpeed;
-
-        
-        transform.localEulerAngles = new Vector3(-rotationY, 0, 0 );
-        playerTransform.localEulerAngles = new Vector3(0, -rotationX, 0);
         
         _horizontal = Input.GetAxisRaw("Horizontal");
         _vertical = Input.GetAxisRaw("Vertical");
         
-        playerTransform.Translate((playerTransform.right * _horizontal + playerTransform.forward * _vertical) * _moveSpeed * Time.deltaTime);
-
+        _horizontalmovement = transform.right * _horizontal;
+        _forwardmovement = transform.forward * _vertical; 
+        
+        
         this.transform.position = playerTransform.position; 
         
         
+        float rotationY = Input.GetAxis("Mouse Y") * _turnSpeed;
+        float rotationX = Input.GetAxis("Mouse X") * _turnSpeed;
         
-        /*if (rotationY > 0)
+        if (rotationY > 0)
         {
             _angles = new Vector3(Mathf.MoveTowards(_angles.x, -80, rotationY), _angles.y + rotationX, 0);
         }
         else
         {
             _angles = new Vector3(Mathf.MoveTowards(_angles.x, 80, -rotationY), _angles.y + rotationX, 0);
-        }*/
-        
-        
-        //transform.position = this.transform.position;
+        }
 
-        /*_angles.y = 0; :-(
+        transform.localEulerAngles = _angles;
+        this.transform.position = playerTransform.position; 
+        
+        _rigidbody.MoveRotation(_rigidbody.rotation * Quaternion.Euler(new Vector3(0, Input.GetAxis("Mouse X") * sensitivityX, 0)));
+
+
+        _angles.y = 0;
         playerTransform.localEulerAngles = _angles;
-        */
 
     }
 }
