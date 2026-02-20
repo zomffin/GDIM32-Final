@@ -6,15 +6,16 @@ public abstract class Item : MonoBehaviour
 {
     [SerializeField] private float _timeToCorrect;
 
-    private Transform _targetPos; 
-    private Rigidbody _rigidbody;
-    private bool _pickedUp = false;
-    private Vector3 _velocity = Vector3.zero; 
+    protected Transform _targetPos; 
+    protected Rigidbody _rigidbody;
+    protected bool _pickedUp = false;
+    protected Vector3 _velocity = Vector3.zero; 
     
-
+    
+    // you have to copy Start and FixedUpdate into child classes cuz they dont inherit ts :-( 
     void Start()
     {
-        _rigidbody = GetComponent<Rigidbody>();
+        _rigidbody = this.GetComponent<Rigidbody>();
         
     }
 
