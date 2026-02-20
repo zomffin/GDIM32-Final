@@ -1,11 +1,12 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] private Transform playerTransform;
-    [SerializeField] private Transform _playerRigidbody; 
+    [SerializeField] private Transform _playerTransform;
+    [SerializeField] private Rigidbody _playerRigidbody; 
 
     [SerializeField] private float _moveSpeed;
     [SerializeField] private float _turnSpeed;
@@ -24,7 +25,7 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     // Update is called once per frame
@@ -36,11 +37,11 @@ public class Player : MonoBehaviour
         _horizontal = Input.GetAxisRaw("Horizontal");
         _vertical = Input.GetAxisRaw("Vertical");
         
-        _horizontalmovement = transform.right * _horizontal;
-        _forwardmovement = transform.forward * _vertical; 
+        _horizontalmovement = _playerTransform.right * _horizontal;
+        _forwardmovement = _playerTransform.forward * _vertical; 
         
         
-        this.transform.position = playerTransform.position; 
+        //this.transform.position = _playerTransform.position; 
         
         
         float rotationY = Input.GetAxis("Mouse Y") * _turnSpeed;
@@ -55,14 +56,18 @@ public class Player : MonoBehaviour
             _angles = new Vector3(Mathf.MoveTowards(_angles.x, 80, -rotationY), _angles.y + rotationX, 0);
         }
 
-        transform.localEulerAngles = _angles;
-        this.transform.position = playerTransform.position; 
         
-        _rigidbody.MoveRotation(_rigidbody.rotation * Quaternion.Euler(new Vector3(0, Input.GetAxis("Mouse X") * sensitivityX, 0)));
+        _playerRigidbody.MoveRotation(_playerRigidbody.rotation * Quaternion.Euler(new Vector3(0, rotationX * _turnSpeed, 0)));
+
+        this.transform.position = _playerTransform.position; 
+        
+        transform.localEulerAngles = _angles;
 
 
-        _angles.y = 0;
-        playerTransform.localEulerAngles = _angles;
+    }
 
+    private void FixedUpdate()
+    {
+        _playerRigidbody.velocity = (_horizontalmovement + _forwardmovement) * _moveSpeed;
     }
 }

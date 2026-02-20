@@ -18,6 +18,8 @@ public class GameController : MonoBehaviour
         Instance = this; 
 
         Player = GameObject.FindWithTag("Player").GetComponent<Player>();
+        
+        Debug.Log("Player:" + Player.gameObject.ToString());
     }
     // Start is called before the first frame update
     void Start()
