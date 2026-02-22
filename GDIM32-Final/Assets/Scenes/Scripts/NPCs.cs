@@ -1,72 +1,70 @@
-// using System.Collections;
-// using System.Collections.Generic;
-// using UnityEngine;
-// using UnityEngine.Assertions;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.Assertions;
+public class NPCs : MonoBehaviour
+{
+     private enum NPCsState
+     {
+         Wandering, Pursued
+     }
 
-// public class NPCs : MonoBehaviour
-// {
-//     private enum NPCsState
-//     {
-//         Wandering, Pursued
-//     }
+    [SerializeField] private LayerMask _lineOfSightLayers;
+     [SerializeField] private float _wanderTimeMax = 5.0f;
+     [SerializeField] private float _obstacleCheckDistance = 1.0f;
+     [SerializeField] private float _obstacleCheckRadius = 1.0f;
+     [SerializeField] private float _stopDistance = 0.5f;
+     [SerializeField] private float _rotateSpeed;
+     [SerializeField] private float _walkSpeed;
+     [SerializeField] private float _lineOfSightMaxDistance;
+     [SerializeField] private Vector3 _raycastStartOffset;
+     [SerializeField] private Rigidbody _rigidBody;
+     [SerializeField] private MeshRenderer _renderer;
 
-//    [SerializeField] private LayerMask _lineOfSightLayers;
-//     [SerializeField] private float _wanderTimeMax = 5.0f;
-//     [SerializeField] private float _obstacleCheckDistance = 1.0f;
-//     [SerializeField] private float _obstacleCheckRadius = 1.0f;
-//     [SerializeField] private float _stopDistance = 0.5f;
-//    [SerializeField] private float _rotateSpeed;
-//     [SerializeField] private float _walkSpeed;
-//     [SerializeField] private float _lineOfSightMaxDistance;
-//     [SerializeField] private Vector3 _raycastStartOffset;
-//     [SerializeField] private Rigidbody _rigidBody;
-//     [SerializeField] private MeshRenderer _renderer;
-
-//     private string _playerTag = "Player";
-
-//     private NPCsState _state;
-//     private float _wanderTime;
-//     private Vector3 _wanderDirection;
+     private string _playerTag = "Player";
+     private NPCsState _state;
+     private float _wanderTime;
+     private Vector3 _wanderDirection;
 
 //     // our position + raycast offset, in world space
 //     // _raycastStartOffset is used to make sure the raycast starts a little above the ground
 //     // TransformPoint is used to take the offset from local to world space
-//     private Vector3 _raycastStart {
-//         get {
-//             return transform.TransformPoint(_raycastStartOffset);
-//         }
-//     } 
+     private Vector3 _raycastStart {
+         get {
+           return transform.TransformPoint(_raycastStartOffset);
+         }
+     } 
     
 //     // a vector pointing from _raycastStart to the player's center
-//     private Vector3 _raycastDir {
-//         get {
-//             return (NPCs.Instance.PlayerCenter - _raycastStart).normalized;
-//         }
-//     }
+  private Vector3 _raycastDir {
+         get {
+             return (NPCs.Instance.PlayerCenter - _raycastStart).normalized;
+         }
+     }
 
 //     // variables used for drawing Gizmos
-//     private Vector3 _raycastHitLocation;
-//     private Vector3 _spherecastHitLocation;
-//     private bool _hasLineOfSightToPlayer;
-//     private Vector3 _meToPlayer;
+     private Vector3 _raycastHitLocation;
+     private Vector3 _spherecastHitLocation;
+     private bool _hasLineOfSightToPlayer;
+     private Vector3 _meToPlayer;
 
-//     private void Update ()
-//     {
-//         UpdateState();
-//         RunState();
-//     }
+     private void Update ()
+     {
+         UpdateState();
+         Pursued();
+     }
 
-//     private void UpdateState ()
-//     {
-//         if(HasLineOfSightToPlayer())
-//         {
-//             _state = NPCsState.Pursued;
-//         }
-//         else 
-//         {
-//             _state = NPCsState.Wandering;
-//         }
-//     }
+     private void UpdateState ()
+     {
+         if(HasLineOfSightToPlayer())
+         {
+             _state = NPCsState.Pursued;
+         }
+         else 
+         {
+             _state = NPCsState.Wandering;
+         }
+     }
 
 //     // suggested improvement: 
 //     // this state machine is curretly overkill because there's only 2 states
@@ -83,17 +81,17 @@
 //         }
 //     }
 
-//     private void RunWanderState ()
-//     {
-//         _renderer.material.color = Color.white;
+     private void RunWanderState ()
+     {
+         _renderer.material.color = Color.white;
 
-//         // switches to a new random direction every [_wanderTimeMax] seconds
-//         _wanderTime -= Time.deltaTime;
-//         if(_wanderTime <= 0.0f)
-//         {
-//             _wanderTime = _wanderTimeMax;
-//             GetNewWanderDirection();
-//         }
+         // switches to a new random direction every [_wanderTimeMax] seconds
+         _wanderTime -= Time.deltaTime;
+         if(_wanderTime <= 0.0f)
+         {
+             _wanderTime = _wanderTimeMax;
+             GetNewWanderDirection();
+         }
 
 //         // checks for obstacles, and gets a new direction if there are any
 //         // limit attempts per frame so we don't crash program if duck gets stuck
@@ -231,8 +229,8 @@
 //             Gizmos.color = Color.yellow;
 //             Gizmos.DrawRay(transform.position, _meToPlayer);
 //         }
-//     }
-// }
+     }
+ }
 
 
 
