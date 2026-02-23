@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Assertions;
 public class NPCs : MonoBehaviour
 {
+    //highkey just touched reids code 
      private enum NPCsState
      {
          Wandering, Pursued
