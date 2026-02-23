@@ -9,6 +9,8 @@ public class NPCs : MonoBehaviour
          Wandering, Pursued
      }
 
+    
+    [SerializeField] private Transform _player;
     [SerializeField] private LayerMask _lineOfSightLayers;
      [SerializeField] private float _wanderTimeMax = 5.0f;
      [SerializeField] private float _obstacleCheckDistance = 1.0f;
@@ -38,7 +40,7 @@ public class NPCs : MonoBehaviour
 //     // a vector pointing from _raycastStart to the player's center
   private Vector3 _raycastDir {
          get {
-             return (NPCs.Instance.PlayerCenter - _raycastStart).normalized;
+       return (_player.position - _raycastStart).normalized;
          }
      }
 
@@ -51,7 +53,7 @@ public class NPCs : MonoBehaviour
      private void Update ()
      {
          UpdateState();
-         Pursued();
+          RunState();
      }
 
      private void UpdateState ()
@@ -71,15 +73,25 @@ public class NPCs : MonoBehaviour
 //     // but if we were to want to implement state transitions,
 //     // like maybe if the duck wanted to finish turning before it started walking in a new direction,
 //     // then changing states would matter and this state machine would help with that!
-//     private void RunState ()
-//     {
-//         switch(_state) 
-//         {
-//             case NPCsState.Wandering: RunWanderState(); break;
-//             case NPCsState.Pursued: RunPursueState(); break;
-//             default: Debug.LogError("unhandled state " + _state); break;
-//         }
-//     }
+     private void RunState ()
+     {
+         switch(_state) 
+         {
+        case NPCsState.Wandering:
+            RunWanderState();
+            break;
+
+        case NPCsState.Pursued:
+            RunPursueState();
+            break;
+
+        default:
+            Debug.LogError("unhandled state " + _state);
+            break;
+    }
+}
+         
+    
 
      private void RunWanderState ()
      {
@@ -93,142 +105,142 @@ public class NPCs : MonoBehaviour
              GetNewWanderDirection();
          }
 
-//         // checks for obstacles, and gets a new direction if there are any
-//         // limit attempts per frame so we don't crash program if duck gets stuck
-//         int attempts = 0;
-//         while(HasCloseObstacles() && attempts < 3)
-//         {
-//             GetNewWanderDirection();
-//             attempts ++;
-//         }
+         // checks for obstacles, and gets a new direction if there are any
+         // limit attempts per frame so we don't crash program if duck gets stuck
+         int attempts = 0;
+         while(HasCloseObstacles() && attempts < 3)
+         {
+             GetNewWanderDirection();
+             attempts ++;
+         }
 
-//         // actually rotate towards and move in wander direction
-//         RotateTowards(_wanderDirection);
-//         transform.Translate(_wanderDirection * _walkSpeed * Time.deltaTime, Space.World);
-//     }
+         // actually rotate towards and move in wander direction
+         RotateTowards(_wanderDirection);
+         transform.Translate(_wanderDirection * _walkSpeed * Time.deltaTime, Space.World);
+     }
 
-//     private void GetNewWanderDirection ()
-//     {
-//         // get a random 2d location inside a circle and treat it as a direction
-//         Vector3 randomDir = UnityEngine.Random.insideUnitCircle;
-//         _wanderDirection = new Vector3(randomDir.x, 0.0f, randomDir.y);
-//         _wanderDirection = _wanderDirection.normalized;
-//     }
+     private void GetNewWanderDirection ()
+     {
+         // get a random 2d location inside a circle and treat it as a direction
+         Vector3 randomDir = UnityEngine.Random.insideUnitCircle;
+         _wanderDirection = new Vector3(randomDir.x, 0.0f, randomDir.y);
+         _wanderDirection = _wanderDirection.normalized;
+     }
 
-//     private bool HasCloseObstacles ()
-//     {
-//         // do a spherecast in the direction we want to move in
-//         // if we hit anything, we'll check a new direction
-//         RaycastHit hitInfo;
-//         bool hasObstacle = Physics.SphereCast(
-//             _raycastStart,
-//             _obstacleCheckRadius,
-//             _wanderDirection,
-//             out hitInfo,
-//             _obstacleCheckDistance
-//         );
+     private bool HasCloseObstacles ()
+     {
+         // do a spherecast in the direction we want to move in
+         // if we hit anything, we'll check a new direction
+         RaycastHit hitInfo;
+         bool hasObstacle = Physics.SphereCast(
+             _raycastStart,
+             _obstacleCheckRadius,
+            _wanderDirection,
+             out hitInfo,
+             _obstacleCheckDistance
+         );
         
-//         if(hasObstacle) 
-//         {
-//             _spherecastHitLocation = hitInfo.point;
-//         }
+         if(hasObstacle) 
+         {
+             _spherecastHitLocation = hitInfo.point;
+         }
 
-//         return hasObstacle;
-//     }
+         return hasObstacle;
+     }
 
-//     private void RunPursueState ()
-//     {
-//         _renderer.material.color = Color.red;
+     private void RunPursueState ()
+     {
+         _renderer.material.color = Color.red;
 
-//         // zero out y-axis because we only care about moving on x/z plane (ground)
-//         Vector3 playerPos = NPCs.Instance.transform.position;
-//         playerPos = new Vector3(playerPos.x, 0, playerPos.z);
+         // zero out y-axis because we only care about moving on x/z plane (ground)
+        Vector3 playerPos = _player.position;
+         playerPos = new Vector3(playerPos.x, 0, playerPos.z);
 
-//         // get vector pointing from duck to target point
-//         Vector3 me = new Vector3(transform.position.x, 0, transform.position.z);
-//         _meToPlayer = (playerPos - me).normalized;
+         // get vector pointing from duck to target point
+         Vector3 me = new Vector3(transform.position.x, 0, transform.position.z);
+        _meToPlayer = (playerPos - me).normalized;
 
-//         RotateTowards(_meToPlayer);
-//         WalkTowards(playerPos);
-//     }
+         RotateTowards(_meToPlayer);
+         WalkTowards(playerPos);
+     }
 
-//     private void RotateTowards(Vector3 direction)
-//     {
-//         Vector3 currentForward = new Vector3(transform.forward.x, 0, transform.forward.z);
-//         Vector3 newForward = Vector3.RotateTowards(currentForward, direction, _rotateSpeed * Time.deltaTime, 0.0f);
-//         transform.forward = newForward;
-//     }
+     private void RotateTowards(Vector3 direction)
+     {
+         Vector3 currentForward = new Vector3(transform.forward.x, 0, transform.forward.z);
+         Vector3 newForward = Vector3.RotateTowards(currentForward, direction, _rotateSpeed * Time.deltaTime, 0.0f);
+         transform.forward = newForward;
+     }
 
-//     private void WalkTowards(Vector3 point)
-//     {
-//         Vector3 me = new Vector3(transform.position.x, 0, transform.position.z);
+     private void WalkTowards(Vector3 point)
+     {
+         Vector3 me = new Vector3(transform.position.x, 0, transform.position.z);
 
-//         if(Vector3.Distance(me, point) <= _stopDistance)
-//         {
-//             // exit early if i'm already close to player
-//             return;
-//         }
+         if(Vector3.Distance(me, point) <= _stopDistance)
+         {
+             // exit early if i'm already close to player
+             return;
+         }
 
-//         // create a vector pointing from our position to the target position
-//         Vector3 meToTarget = point - me;
-//         meToTarget = meToTarget.normalized;
+         // create a vector pointing from our position to the target position
+         Vector3 meToTarget = point - me;
+         meToTarget = meToTarget.normalized;
 
-//         // move in that direction
-//         transform.Translate(meToTarget * _walkSpeed * Time.deltaTime, Space.World);
-//     }
+         // move in that direction
+         transform.Translate(meToTarget * _walkSpeed * Time.deltaTime, Space.World);
+     }
 
-//     private bool HasLineOfSightToPlayer ()
-//     {
-//         _hasLineOfSightToPlayer = false;
-//         RaycastHit hitInfo;
-//         // fire a raycast pointing from the duck (_raycastStart) in the direction of the player (_raycastDir)
-//         // and only going as far as _lineOfSightMaxDistance
-//         if(Physics.Raycast(_raycastStart, _raycastDir, out hitInfo, _lineOfSightMaxDistance, _lineOfSightLayers.value))
-//         {
-//             _raycastHitLocation = hitInfo.point;
-//             // check if the object we hit was actually the player
-//             if(hitInfo.collider.gameObject.tag.Equals(_playerTag))
-//             {
-//                 _hasLineOfSightToPlayer = true;
-//             }
-//         }
+     private bool HasLineOfSightToPlayer ()
+     {
+         _hasLineOfSightToPlayer = false;
+         RaycastHit hitInfo;
+         // fire a raycast pointing from the duck (_raycastStart) in the direction of the player (_raycastDir)
+         // and only going as far as _lineOfSightMaxDistance
+         if(Physics.Raycast(_raycastStart, _raycastDir, out hitInfo, _lineOfSightMaxDistance, _lineOfSightLayers.value))
+         {
+             _raycastHitLocation = hitInfo.point;
+             // check if the object we hit was actually the player
+             if(hitInfo.collider.gameObject.tag.Equals(_playerTag))
+             {
+                 _hasLineOfSightToPlayer = true;
+             }
+         }
 
-//         return _hasLineOfSightToPlayer;
-//     }
+         return _hasLineOfSightToPlayer;
+     }
 
-//     private void OnDrawGizmos ()
-//     {
-//         // don't draw these gizmos unless game is running
-//         if(!Application.isPlaying) return;
+     private void OnDrawGizmos ()
+     {
+         // don't draw these gizmos unless game is running
+         if(!Application.isPlaying) return;
 
-//         // draw player raycast stuff
-//         if(_hasLineOfSightToPlayer) {
-//             Gizmos.color = Color.green;
-//         } else {
-//             Gizmos.color = Color.red;
-//         }
-//         Gizmos.DrawRay(_raycastStart, _raycastDir * _lineOfSightMaxDistance);
-//         if(NPCs.Instance != null) Gizmos.DrawSphere(NPCs.Instance.PlayerCenter, 0.1f);
-//         Gizmos.DrawSphere(_raycastHitLocation, 0.1f);
+         // draw player raycast stuff
+         if(_hasLineOfSightToPlayer) {
+             Gizmos.color = Color.green;
+         } else {
+             Gizmos.color = Color.red;
+         }
+         Gizmos.DrawRay(_raycastStart, _raycastDir * _lineOfSightMaxDistance);
+if(_player != null) Gizmos.DrawSphere(_player.position, 0.1f);
+         Gizmos.DrawSphere(_raycastHitLocation, 0.1f);
 
-//         // draw direction we want to move in based on state we're in 
-//         if(_state == NPCsState.Wandering)
-//         {
-//             Gizmos.color = Color.yellow;
-//             Gizmos.DrawRay(transform.position, _wanderDirection);
+         // draw direction we want to move in based on state we're in 
+         if(_state == NPCsState.Wandering)
+         {
+             Gizmos.color = Color.yellow;
+             Gizmos.DrawRay(transform.position, _wanderDirection);
 
-//             // also visualize spherecast checking for obstacles
-//             Gizmos.DrawWireSphere(_raycastStart, _obstacleCheckRadius);
-//             Gizmos.DrawWireSphere(_raycastStart + _wanderDirection * _obstacleCheckDistance, _obstacleCheckRadius);
+             // also visualize spherecast checking for obstacles
+             Gizmos.DrawWireSphere(_raycastStart, _obstacleCheckRadius);
+             Gizmos.DrawWireSphere(_raycastStart + _wanderDirection * _obstacleCheckDistance, _obstacleCheckRadius);
 
-//             // draw spherecast hit location
-//             Gizmos.DrawSphere(_spherecastHitLocation, 0.1f);
-//         }
-//         else if(_state == NPCsState.Pursued)
-//         {
-//             Gizmos.color = Color.yellow;
-//             Gizmos.DrawRay(transform.position, _meToPlayer);
-//         }
+             // draw spherecast hit location
+           Gizmos.DrawSphere(_spherecastHitLocation, 0.1f);
+         }
+         else if(_state == NPCsState.Pursued)
+         {
+             Gizmos.color = Color.yellow;
+             Gizmos.DrawRay(transform.position, _meToPlayer);
+         }
      }
  }
 
