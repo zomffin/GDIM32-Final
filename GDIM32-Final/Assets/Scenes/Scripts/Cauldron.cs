@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Cauldron : MonoBehaviour
 {
@@ -8,7 +9,7 @@ public class Cauldron : MonoBehaviour
     {
         if (collision.name == "test item")
         {
-            Debug.Log(collision.name);
+            SceneManager.LoadScene("WinScreen");
         }
         Debug.Log("Cooking");
     }
