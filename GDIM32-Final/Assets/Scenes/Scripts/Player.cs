@@ -98,7 +98,9 @@ public class Player : MonoBehaviour
     private void FixedUpdate()
     {
         // Moves player- it's in fixed update because it's a physics call 
-        _playerRigidbody.velocity = (_horizontalmovement + _forwardmovement) * _moveSpeed;
+        Vector3 newvelocity = (_horizontalmovement + _forwardmovement) * _moveSpeed;
+        newvelocity.y = _playerRigidbody.velocity.y;
+        _playerRigidbody.velocity = newvelocity; 
     }
     
     void OnCollisionStay()
