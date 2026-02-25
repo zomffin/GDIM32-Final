@@ -77,7 +77,7 @@ public class Player : MonoBehaviour
         transform.localEulerAngles = _angles;
 
 
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             Interact(); 
         }
