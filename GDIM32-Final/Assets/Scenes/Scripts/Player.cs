@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
 
     [SerializeField] private float _moveSpeed;
     [SerializeField] private float _turnSpeed;
+    [SerializeField] private float _jumpForce;
 
     
     
@@ -29,6 +30,7 @@ public class Player : MonoBehaviour
     private float _vertical;
     private Vector3 _horizontalmovement;
     private Vector3 _forwardmovement;
+    private bool _isGrounded = true; 
     
     private bool _hasItem = false;
     private Item _itemHeld; 
@@ -76,12 +78,20 @@ public class Player : MonoBehaviour
         // Rotates camera X + Y + Z
         transform.localEulerAngles = _angles;
 
+        if (Input.GetKeyDown(KeyCode.Space) && _isGrounded)
+        {
+            Debug.Log("clicked space");
+            _isGrounded = false; 
+            _playerRigidbody.AddForce(Vector3.up * _jumpForce, ForceMode.Impulse);
+        }
+        
 
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKeyDown(KeyCode.E))
         {
             Interact(); 
         }
         
+        Debug.Log("Is grounded: " + _isGrounded);
         
     }
 
@@ -89,6 +99,11 @@ public class Player : MonoBehaviour
     {
         // Moves player- it's in fixed update because it's a physics call 
         _playerRigidbody.velocity = (_horizontalmovement + _forwardmovement) * _moveSpeed;
+    }
+    
+    void OnCollisionStay()
+    {
+        _isGrounded = true;
     }
 
     // Method for interacting with items 
