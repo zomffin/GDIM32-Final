@@ -24,10 +24,22 @@ public class NPCs : Item
      [SerializeField] private Rigidbody _rigidBody;
      [SerializeField] private MeshRenderer _renderer;
 
-     private string _playerTag = "Player";
+     private string _playerTag = "PlayerObj";
      private NPCsState _state;
      private float _wanderTime;
      private Vector3 _wanderDirection;
+     
+     // variables used for drawing Gizmos
+     private Vector3 _raycastHitLocation;
+     private Vector3 _spherecastHitLocation;
+     private bool _hasLineOfSightToPlayer;
+     private Vector3 _meToPlayer;
+
+     
+     private void Start()
+     {
+         _rigidbody = this.GetComponent<Rigidbody>();
+     }
 
 //     // our position + raycast offset, in world space
 //     // _raycastStartOffset is used to make sure the raycast starts a little above the ground
@@ -45,18 +57,12 @@ public class NPCs : Item
          }
      }
 
-//     // variables used for drawing Gizmos
-     private Vector3 _raycastHitLocation;
-     private Vector3 _spherecastHitLocation;
-     private bool _hasLineOfSightToPlayer;
-     private Vector3 _meToPlayer;
 
      private void Update ()
      {
-         _rigidbody = this.GetComponent<Rigidbody>();
          
          UpdateState();
-          RunState();
+         RunState();
      }
 
      private void FixedUpdate()
