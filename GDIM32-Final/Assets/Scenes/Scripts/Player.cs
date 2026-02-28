@@ -22,8 +22,15 @@ public class Player : MonoBehaviour
     // For raycasting for Items: Should ONLY have items layer selected or else it'll try to grab other stuff
     [SerializeField] LayerMask raycastLayers;
     // Empty game object that held items will snap to 
-    [SerializeField] private GameObject targetPos; 
+    [SerializeField] private GameObject targetPos;
 
+    [SerializeField] private float _maxHoldDistance;
+    [SerializeField] private float _minHoldDistance; 
+    [SerializeField] private float _holdSensitivity; 
+    
+    
+    
+    
     // Everything needed for camera + player movement 
     private Vector3 _angles; 
     private float _horizontal;
@@ -91,6 +98,23 @@ public class Player : MonoBehaviour
             Interact(); 
         }
         
+        float _mouseWheel = Input.GetAxisRaw("Mouse ScrollWheel");
+        
+        float _distanceToObject = Vector3.Distance(targetPos.transform.position, transform.position);
+        
+        if (_mouseWheel != 0f)
+        {
+            if (_mouseWheel < 0 && _distanceToObject > _minHoldDistance)
+            {
+                targetPos.transform.Translate(this.gameObject.transform.forward * _holdSensitivity * _mouseWheel, Space.World);
+            } 
+            else if (_mouseWheel > 0 && _distanceToObject < _maxHoldDistance)
+            {
+                targetPos.transform.Translate(this.gameObject.transform.forward * _holdSensitivity * _mouseWheel, Space.World);
+            }
+            
+        }
+        
         Debug.Log("Is grounded: " + _isGrounded);
         
     }
@@ -99,12 +123,15 @@ public class Player : MonoBehaviour
     {
         // Moves player- it's in fixed update because it's a physics call 
         Vector3 newvelocity = (_horizontalmovement + _forwardmovement) * _moveSpeed;
+        // Making sure the y value isn't replaced (not necessary for basic movement) also it messes with graviy if we dont lol 
         newvelocity.y = _playerRigidbody.velocity.y;
         _playerRigidbody.velocity = newvelocity; 
     }
     
-    void OnCollisionStay()
+    void OnCollisionEnter()
     {
+        //THIS SHI ISNT WORKING HELP
+        Debug.Log("on collision enter");
         _isGrounded = true;
     }
 
