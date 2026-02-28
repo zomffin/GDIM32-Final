@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
     [SerializeField] private Rigidbody _playerRigidbody; 
 
     [SerializeField] private float _moveSpeed;
+    [SerializeField] private float _sprintSpeed; 
     [SerializeField] private float _turnSpeed;
     [SerializeField] private float _jumpForce;
 
@@ -37,7 +38,8 @@ public class Player : MonoBehaviour
     private float _vertical;
     private Vector3 _horizontalmovement;
     private Vector3 _forwardmovement;
-    private bool _isGrounded = true; 
+    private float _sprintMod;
+    private bool _isGrounded = true;
     
     private bool _hasItem = false;
     private Item _itemHeld; 
@@ -58,9 +60,16 @@ public class Player : MonoBehaviour
         _vertical = Input.GetAxisRaw("Vertical");
         
         _horizontalmovement = _playerTransform.right * _horizontal;
-        _forwardmovement = _playerTransform.forward * _vertical; 
-        
-        
+        _forwardmovement = _playerTransform.forward * _vertical;
+
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            _sprintMod = _sprintSpeed;
+        }
+        else
+        {
+            _sprintMod = 1; 
+        }
         
         // Get mouse movement
         float rotationY = Input.GetAxis("Mouse Y") * _turnSpeed;
@@ -99,7 +108,6 @@ public class Player : MonoBehaviour
         }
         
         float _mouseWheel = Input.GetAxisRaw("Mouse ScrollWheel");
-        
         float _distanceToObject = Vector3.Distance(targetPos.transform.position, transform.position);
         
         if (_mouseWheel != 0f)
@@ -122,7 +130,7 @@ public class Player : MonoBehaviour
     private void FixedUpdate()
     {
         // Moves player- it's in fixed update because it's a physics call 
-        Vector3 newvelocity = (_horizontalmovement + _forwardmovement) * _moveSpeed;
+        Vector3 newvelocity = (_horizontalmovement + _forwardmovement) * _moveSpeed * _sprintMod;
         // Making sure the y value isn't replaced (not necessary for basic movement) also it messes with graviy if we dont lol 
         newvelocity.y = _playerRigidbody.velocity.y;
         _playerRigidbody.velocity = newvelocity; 
@@ -183,4 +191,6 @@ public class Player : MonoBehaviour
             }
         }
     }
+    
+    
 }
