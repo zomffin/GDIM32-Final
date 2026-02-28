@@ -10,7 +10,7 @@ public abstract class Item : MonoBehaviour
     [SerializeField] private float _timeToCorrect;
 
     protected Transform _targetPos; 
-    protected Rigidbody _rigidbody;
+    public Rigidbody _rigidbody;
     protected bool _pickedUp = false;
     protected Vector3 _velocity = Vector3.zero; 
     

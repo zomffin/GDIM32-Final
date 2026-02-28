@@ -27,7 +27,9 @@ public class Player : MonoBehaviour
 
     [SerializeField] private float _maxHoldDistance;
     [SerializeField] private float _minHoldDistance; 
-    [SerializeField] private float _holdSensitivity; 
+    [SerializeField] private float _holdSensitivity;
+
+    [SerializeField] private float _throwForce;
     
     
     
@@ -100,7 +102,11 @@ public class Player : MonoBehaviour
             _isGrounded = false; 
             _playerRigidbody.AddForce(Vector3.up * _jumpForce, ForceMode.Impulse);
         }
-        
+
+        if (Input.GetKeyDown(KeyCode.Mouse1) && _hasItem)
+        {
+            Throw(); 
+        }
 
         if (Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKeyDown(KeyCode.E))
         {
@@ -190,6 +196,14 @@ public class Player : MonoBehaviour
                 Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.red,10);
             }
         }
+    }
+
+    private void Throw()
+    {
+        _itemHeld.Interact(targetPos); 
+        _itemHeld._rigidbody.AddForce(this.transform.forward * _throwForce, ForceMode.Impulse);
+        _itemHeld = null;
+        _hasItem = false;
     }
     
     
