@@ -269,7 +269,7 @@ GameObject:
   - component: {fileID: 107581687}
   - component: {fileID: 107581686}
   - component: {fileID: 107581685}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: NPC test (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -288,6 +288,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e11f0195dd2ff4eb4b6c54c2661927fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _timeToCorrect: 0
   _player: {fileID: 158709283}
   _lineOfSightLayers:
     serializedVersion: 2
@@ -1379,7 +1380,7 @@ GameObject:
   - component: {fileID: 701505473}
   - component: {fileID: 701505472}
   - component: {fileID: 701505471}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: NPC test
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1398,6 +1399,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e11f0195dd2ff4eb4b6c54c2661927fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _timeToCorrect: 0
   _player: {fileID: 158709283}
   _lineOfSightLayers:
     serializedVersion: 2
@@ -1633,7 +1635,7 @@ GameObject:
   - component: {fileID: 778948825}
   - component: {fileID: 778948824}
   - component: {fileID: 778948823}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: NPC test (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1652,6 +1654,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e11f0195dd2ff4eb4b6c54c2661927fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _timeToCorrect: 0
   _player: {fileID: 158709283}
   _lineOfSightLayers:
     serializedVersion: 2

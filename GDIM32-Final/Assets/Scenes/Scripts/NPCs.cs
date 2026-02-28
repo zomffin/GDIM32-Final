@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Assertions;
-public class NPCs : MonoBehaviour
+public class NPCs : Item
 {
     //highkey just touched reids code 
      private enum NPCsState
      {
-         Wandering, Pursued
+         Wandering, Pursued, PickedUp
      }
 
     
@@ -53,16 +53,31 @@ public class NPCs : MonoBehaviour
 
      private void Update ()
      {
+         _rigidbody = this.GetComponent<Rigidbody>();
+         
          UpdateState();
           RunState();
      }
 
+     private void FixedUpdate()
+     {
+         if (_pickedUp)
+         {
+             Move(); 
+         }
+     }
+
      private void UpdateState ()
      {
-         if(HasLineOfSightToPlayer())
+         if (_pickedUp)
+         {
+             _state = NPCsState.PickedUp; 
+         }
+         else if(HasLineOfSightToPlayer())
          {
              _state = NPCsState.Pursued;
          }
+         
          else 
          {
              _state = NPCsState.Wandering;
@@ -85,7 +100,10 @@ public class NPCs : MonoBehaviour
         case NPCsState.Pursued:
             RunPursueState();
             break;
-
+        
+        case NPCsState.PickedUp:
+            //implement fighting later
+            break;
         default:
             Debug.LogError("unhandled state " + _state);
             break;
