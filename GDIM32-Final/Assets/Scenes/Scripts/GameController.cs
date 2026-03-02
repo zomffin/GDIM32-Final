@@ -8,6 +8,7 @@ public class GameController : MonoBehaviour
     public static GameController Instance { get; private set; }
     public CauldronController Cauldron { get; private set; }
     [SerializeField] int _itemcount = 0;
+    [SerializeField] int _totalItemRequired = 2;
 
     private void Awake()
     {
@@ -35,7 +36,7 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (_itemcount >= 1)
+        if (_itemcount >= _totalItemRequired)
         {
             SceneManager.LoadScene("WinScreen");
         }

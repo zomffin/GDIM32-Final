@@ -51,6 +51,7 @@ public class Player : MonoBehaviour
     {
         // Locks the cursor when u click into the game
         Cursor.lockState = CursorLockMode.Locked;
+        GameController.Instance.Cauldron.ItemRecieved += HandleItemRecieved;
     }
 
     void Update()
@@ -202,6 +203,11 @@ public class Player : MonoBehaviour
     {
         _itemHeld.Interact(targetPos);
         _itemHeld._rigidbody.AddForce(this.transform.forward * _throwForce, ForceMode.Impulse);
+        _itemHeld = null;
+        _hasItem = false;
+    }
+    public void HandleItemRecieved(int item)
+    {
         _itemHeld = null;
         _hasItem = false;
     }
