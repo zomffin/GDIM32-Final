@@ -1,26 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
-public class Cauldron : MonoBehaviour
+
+public class CauldronController : MonoBehaviour
 {
-    [SerializeField] int _itemcount = 0;
+
+    public delegate void IntDelegate(int x);
+    public event IntDelegate ItemRecieved;
+
+
     void OnTriggerEnter(Collider collision)
     {
         if (collision.name == "test item")
         {
+            ItemRecieved?.Invoke(1);
             Destroy(collision.gameObject);
-            _itemcount++;
-            Debug.Log(_itemcount);
-        }
 
+        }
     }
     void Update()
     {
-        if (_itemcount >= 2)
-        {
-            SceneManager.LoadScene("WinScreen");
-        }
+
     }
 }
