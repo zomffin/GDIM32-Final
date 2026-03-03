@@ -12,7 +12,7 @@ public class CauldronController : MonoBehaviour
 
     void OnTriggerEnter(Collider collision)
     {
-        if (collision.name == "test item")
+        if (collision.name == "test item" || collision.name == "fish")
         {
             ItemRecieved?.Invoke(1);
             Destroy(collision.gameObject);

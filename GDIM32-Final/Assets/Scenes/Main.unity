@@ -1601,7 +1601,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _itemcount: 0
-  _totalItemRequired: 2
+  _totalItemRequired: 3
 --- !u!4 &629208569
 Transform:
   m_ObjectHideFlags: 0
