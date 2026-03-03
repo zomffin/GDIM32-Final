@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Assertions;
 public class NPCs : Item
@@ -30,6 +31,9 @@ public class NPCs : Item
     private float _wanderTime;
     private Vector3 _wanderDirection;
 
+    // to be removed when all npcs have animators
+    private bool _hasAnimator; 
+    
     // variables used for drawing Gizmos
     private Vector3 _raycastHitLocation;
     private Vector3 _spherecastHitLocation;
@@ -40,6 +44,10 @@ public class NPCs : Item
     private void Start()
     {
         _rigidbody = this.GetComponent<Rigidbody>();
+        if (_animator == null)
+        {
+            _hasAnimator = false; 
+        }
     }
 
     //     // our position + raycast offset, in world space
@@ -113,7 +121,10 @@ public class NPCs : Item
                 break;
 
             case NPCsState.PickedUp:
-                _animator.SetBool("_IsCaught", true);
+                if (_hasAnimator)
+                {
+                    _animator.SetBool("_IsCaught", true);
+                }
                 //implement fighting later
                 break;
             default:
@@ -126,8 +137,10 @@ public class NPCs : Item
 
     private void RunWanderState()
     {
-        _animator.SetBool("_IsCaught", false);
-        _renderer.material.color = Color.white;
+        if (_hasAnimator)
+        {
+            _animator.SetBool("_IsCaught", false);
+        }
 
         // switches to a new random direction every [_wanderTimeMax] seconds
         _wanderTime -= Time.deltaTime;
@@ -182,7 +195,6 @@ public class NPCs : Item
 
     private void RunPursueState()
     {
-        _renderer.material.color = Color.red;
 
         // zero out y-axis because we only care about moving on x/z plane (ground)
         Vector3 playerPos = _player.position;
