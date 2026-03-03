@@ -6,8 +6,12 @@ Our pick-up item feature required the raycasting function for detecting whether 
 It's necessary in our project because our item interaction is based around physically picking up and carrying items around. The raycast is sent from the camera's transform.forward, ensuring that as long as the item is centered on the player's screen, it'll be picked up. This is intuitive: most the time in real life, we pick up items that are in our view and relatively in front of us. 
 
 
-### Team Member Name 1
-Put your individual check-in Devlog here.
+### Team Member Zoya McDonnell
+At this phase, the UI script, Mainmenu scene and NPC script, an altered versions of one of Reid’s built scene and UI functions.
+It was great to get an idea of how my teammates think. I didn’t use the breakdown much for the early halfway point because I could use the knowledge I already have. I looked back at the proposal to find clarity in others’ code.
+It was more than detailed enough, and I think my teammates being as capable as they are makes it easy for me to notice if they diverge from it, as long as we maintain clear communication. So far, we’ve been using Trello and have added a weekly section. I think spacing out time slots so we aren’t online at the same time will help tremendously.
+
+
 ### Team Member Isabel Matsuno
 Contribution:
 - I mainly built the Player script and prefab. I also made the Item abstract class.
