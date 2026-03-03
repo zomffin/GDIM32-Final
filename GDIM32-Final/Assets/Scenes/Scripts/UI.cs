@@ -1,11 +1,13 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class UI : MonoBehaviour
 {
     [SerializeField] private Image _itemImage;
-    [SerializeField] private Image _checkImage;
+    [SerializeField] private RawImage _checkImage;
     [SerializeField] private Sprite _filledCheckSprite;
+
 
     private CauldronController _cauldron;
 
@@ -24,6 +26,5 @@ public class UI : MonoBehaviour
     private void OnItemReceived(int amount)
     {
         _checkImage.enabled = true;
-        _checkImage.sprite = _filledCheckSprite;
     }
 }
