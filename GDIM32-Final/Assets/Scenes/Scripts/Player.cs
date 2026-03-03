@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
     [SerializeField] private float _sprintSpeed;
     [SerializeField] private float _turnSpeed;
     [SerializeField] private float _jumpForce;
+    
 
     [SerializeField] private LayerMask _jumpMask; 
 
@@ -33,10 +34,13 @@ public class Player : MonoBehaviour
 
     [SerializeField] private float _throwForce;
 
+//clock
+[SerializeField] private ClockUI _clockUI;
 
 
 
     // Everything needed for camera + player movement 
+
     private Vector3 _angles;
     private float _horizontal;
     private float _vertical;
@@ -49,11 +53,14 @@ public class Player : MonoBehaviour
     private Item _itemHeld;
 
 
+
+
     void Start()
     {
         // Locks the cursor when u click into the game
         Cursor.lockState = CursorLockMode.Locked;
         GameController.Instance.Cauldron.ItemRecieved += HandleItemRecieved;
+     
     }
 
     void Update()
@@ -131,6 +138,8 @@ public class Player : MonoBehaviour
             }
 
         }
+        if (_clockUI != null)
+    _clockUI.SetActive(_hasItem);
     }
 
     private void FixedUpdate()
@@ -166,6 +175,7 @@ public class Player : MonoBehaviour
             _itemHeld.Interact(targetPos);
             _itemHeld = null;
             _hasItem = false;
+            
         }
         else
         {
