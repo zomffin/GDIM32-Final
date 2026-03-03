@@ -275,10 +275,10 @@ MonoBehaviour:
   _moveSpeed: 6
   _sprintSpeed: 2
   _turnSpeed: 1
-  _jumpForce: 10
+  _jumpForce: 5
   _jumpMask:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 64
   _raycastDistance: 10
   raycastLayers:
     serializedVersion: 2

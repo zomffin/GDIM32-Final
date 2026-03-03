@@ -150,7 +150,7 @@ public class Player : MonoBehaviour
     void checkGround()
     {
         Collider[] colliders = Physics.OverlapBox(this.gameObject.transform.position, transform.localScale, Quaternion.identity, _jumpMask);
-
+        Debug.Log("colliders length:" + colliders.Length);
         if (colliders.Length > 0)
         {
             _isGrounded = true;

@@ -1522,7 +1522,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &431879621
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5643,7 +5643,7 @@ GameObject:
   - component: {fileID: 2127212025}
   - component: {fileID: 2127212024}
   - component: {fileID: 2127212023}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Terrain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5836,7 +5836,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3770505609601255744, guid: 6c5cc65c6bfc56349ae419cfb764c257, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.3
+      value: 1.21
       objectReference: {fileID: 0}
     - target: {fileID: 3770505609601255744, guid: 6c5cc65c6bfc56349ae419cfb764c257, type: 3}
       propertyPath: m_LocalPosition.z
