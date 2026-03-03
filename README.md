@@ -2,6 +2,7 @@
 ## Check-In
 ### Group Devlog
 Our pick-up item feature required the raycasting function for detecting whether there is an item in front of the player and getting the item if its in range. It's implemented in the Interact() function in the Player Class which sents out a raycast from the direction the camera is facing, and goes as far as_raycastDistance. We also placed all interactable item in Item layer which allows us to use a layermask with the raycast so it only detects interactable items. If the raycast hits an interactable object, we use _itemHeld = hit.collider.GameObject().GetComponent<Item>() to get the item and call its Interact() function. The Interact function tells the item its picked up, and will send it into a state where it will "follow" an invisible game object thats a child  of the player class, ensuring the item moves with the player. The player also saves the Item component so that, when you interact again, you can drop it (or throw it). 
+
 It's necessary in our project because our item interaction is based around physically picking up and carrying items around. The raycast is sent from the camera's transform.forward, ensuring that as long as the item is centered on the player's screen, it'll be picked up. This is intuitive: most the time in real life, we pick up items that are in our view and relatively in front of us. 
 
 
