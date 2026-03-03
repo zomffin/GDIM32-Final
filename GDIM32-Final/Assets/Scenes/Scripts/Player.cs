@@ -15,6 +15,8 @@ public class Player : MonoBehaviour
     [SerializeField] private float _turnSpeed;
     [SerializeField] private float _jumpForce;
 
+    [SerializeField] private LayerMask _jumpMask; 
+
 
 
     [Header("Interact")]
@@ -99,7 +101,6 @@ public class Player : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space) && _isGrounded)
         {
-            Debug.Log("clicked space");
             _isGrounded = false;
             _playerRigidbody.AddForce(Vector3.up * _jumpForce, ForceMode.Impulse);
         }
@@ -141,13 +142,22 @@ public class Player : MonoBehaviour
         // Making sure the y value isn't replaced (not necessary for basic movement) also it messes with graviy if we dont lol 
         newvelocity.y = _playerRigidbody.velocity.y;
         _playerRigidbody.velocity = newvelocity;
+
+        if (!_isGrounded)
+        {
+            checkGround(); 
+        }
     }
 
-    void OnCollisionEnter()
+    void checkGround()
     {
-        //THIS SHI ISNT WORKING HELP
-        Debug.Log("on collision enter");
-        _isGrounded = true;
+        Debug.Log("checking ground");
+        Collider[] colliders = Physics.OverlapBox(this.gameObject.transform.position, transform.localScale, Quaternion.identity, _jumpMask);
+
+        if (colliders.Length > 0)
+        {
+            _isGrounded = true;
+        }
     }
 
     // Method for interacting with items 
