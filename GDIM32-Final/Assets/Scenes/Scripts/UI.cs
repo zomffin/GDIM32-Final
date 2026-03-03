@@ -1,37 +1,29 @@
-// using System.Collections;
-// using System.Collections.Generic;
-// using UnityEngine;
+using UnityEngine;
+using UnityEngine.UI;
 
-// public class UI : MonoBehaviour
-// {
-//     using UnityEngine;
-// using UnityEngine.UI;
-//     [SerializeField] private Image _itemImage;
-//     [SerializeField] private Image _checkImage;
-//     [SerializeField] private Sprite _filledCheckSprite;
+public class UI : MonoBehaviour
+{
+    [SerializeField] private Image _itemImage;
+    [SerializeField] private Image _checkImage;
+    [SerializeField] private Sprite _filledCheckSprite;
 
-// {
+    private CauldronController _cauldron;
 
+    private void Start()
+    {
+        _cauldron = FindObjectOfType<CauldronController>();
 
-//    // public GameObject _requiredItem;
+        if (_cauldron != null)
+        {
+            _cauldron.ItemRecieved += OnItemReceived;
+        }
 
-//     public void SetItem (GameObject itemObject)
-//     {
-//         _requiredItem = itemObject;
-//         SpriteRenderer sr = itemObject.GetComponent<SpriteRenderer>();
-//         if (sr != null)
-//         {
-//             _itemImage.sprite = sr.sprite;
-//         }
+        _checkImage.enabled = false; 
+    }
 
-  
-//     _checkImage.enabled = true;
-//     }
-    
-//     public void FoundItem ()
-//    {
-
-//         _checkImage.sprite = _filledCheckSprite;
-//     }
-// }
-// }
+    private void OnItemReceived(int amount)
+    {
+        _checkImage.enabled = true;
+        _checkImage.sprite = _filledCheckSprite;
+    }
+}
