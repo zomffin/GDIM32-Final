@@ -8,10 +8,10 @@ The ability to pick items up and the structure of the script serving this purpas
 
 ### Team Member Zoya McDonnell
 Contribution:
-At this phase, I made the UI checklist and clock script, Mainmenu scene and NPC script, built sone of the scene and UI functions. 
+- At this phase, I made the UI checklist and clock script, Mainmenu scene and NPC script, built sone of the scene and UI functions. 
 
 Proposal Reflection:
-It was great to get an idea of how my teammates think. I didn’t use the breakdown much for the early halfway point because I could use the knowledge I already have. I looked back at the proposal to find clarity in others’ code.
+- It was great to get an idea of how my teammates think. I didn’t use the breakdown much for the early halfway point because I could use the knowledge I already have. I looked back at the proposal to find clarity in others’ code.
 It was more than detailed enough for the stuff I did which was not as conected to others code yet other then invoking the caldron to check if the item had been dropped for the UI. I think my teammates being as capable as they are makes it easy for me to notice if they diverge from it, as long as we maintain clear communication. So far, we’ve been using Trello and have added a weekly section. I think spacing out time slots so we aren’t online at the same time will help tremendously.
 
 
