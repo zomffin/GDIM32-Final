@@ -114,7 +114,8 @@ public class Player : MonoBehaviour
         {
             Interact();
         }
-
+        
+        
         float _mouseWheel = Input.GetAxisRaw("Mouse ScrollWheel");
         float _distanceToObject = Vector3.Distance(targetPos.transform.position, transform.position);
 
@@ -130,9 +131,6 @@ public class Player : MonoBehaviour
             }
 
         }
-        //hii sry zom if i forgot just want to comment this temporaryliy :D
-        //Debug.Log("Is grounded: " + _isGrounded);
-
     }
 
     private void FixedUpdate()
@@ -151,7 +149,6 @@ public class Player : MonoBehaviour
 
     void checkGround()
     {
-        Debug.Log("checking ground");
         Collider[] colliders = Physics.OverlapBox(this.gameObject.transform.position, transform.localScale, Quaternion.identity, _jumpMask);
 
         if (colliders.Length > 0)
