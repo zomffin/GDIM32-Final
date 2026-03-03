@@ -33,6 +33,7 @@ Reflection:
 The break-down activity gives a clear overview on how the system should conmmunicate between each other. It has been useful to help determine which game object to set as singleton and which game object will be the event sender. The proposal activity also helps us to have a better overall understanding of the scope of our design and helps us determine the priority of tasks.
 
 **Assets used:**
+
 [Environment models (trees bushes etc)](https://assetstore.unity.com/packages/3d/environments/landscapes/kaykit-forest-nature-pack-for-unity-318400)
 
 [Mushroom models](https://assetstore.unity.com/packages/3d/vegetation/low-poly-mushrooms-pack-205460)
@@ -40,6 +41,8 @@ The break-down activity gives a clear overview on how the system should conmmuni
 [Cliff models](https://assetstore.unity.com/packages/3d/environments/landscapes/low-poly-cliff-pack-67289)
 
 [Animal models](https://assetstore.unity.com/packages/3d/characters/animals/quirky-series-free-animals-pack-178235)
+
+[Skybox](https://assetstore.unity.com/packages/2d/textures-materials/sky/customizable-skybox-174576)
 
 ## Final Submission
 ### Group Devlog
