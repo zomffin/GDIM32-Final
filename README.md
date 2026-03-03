@@ -6,8 +6,14 @@ Our pick-up item feature required raycasting function for detecting whether ther
 
 ### Team Member Name 1
 Put your individual check-in Devlog here.
-### Team Member Name 2
-Put your individual check-in Devlog here.
+### Team Member Isabel Matsuno
+Contribution:
+- I mainly built the Player script and prefab. I also made the Item abstract class.
+- I actually was practicing doing the player controls in a different project before the proposal to try to figure out the 3D movement as well as how picking up and interacting with items would work. For this project, I ended up with a weird system of having thee main script on the main camera itself, and it is tied with a basic box gameobject (they are NOT parented with one another).
+
+Proposal Reflection: 
+- Proposal wasn't quite detailed enough. I usually end up having to figure out how different systems should "talk" to one another while I'm in the midst of coding. The proposal helps me think about it ahead of time, but I usually don't reference it that much while coding.
+- I did generally check it to make sure we were adding the right things and thinking about how the final product should be working on the player side. 
 ### Team Member Kristin Zhang
 Contribute to the project at this stage:
 - Build a Basic Quest System that detects we player bring an item to the Cauldron and sets the winning condition. Setting the GameController Class as singleton and game manager and the Cauldron Class as event sender. Used SceneManager to switch to win screen once the _itemCount >= _totalItemRequired condition is met.
