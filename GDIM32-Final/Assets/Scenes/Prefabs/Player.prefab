@@ -279,7 +279,7 @@ MonoBehaviour:
   _jumpMask:
     serializedVersion: 2
     m_Bits: 64
-  _raycastDistance: 10
+  _raycastDistance: 5
   raycastLayers:
     serializedVersion: 2
     m_Bits: 8
@@ -288,6 +288,7 @@ MonoBehaviour:
   _minHoldDistance: 1
   _holdSensitivity: 1
   _throwForce: 5
+  _clockUI: {fileID: 0}
 --- !u!1 &6763335775376626387
 GameObject:
   m_ObjectHideFlags: 0

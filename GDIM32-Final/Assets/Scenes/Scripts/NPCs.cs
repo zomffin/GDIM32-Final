@@ -97,7 +97,6 @@ public class NPCs : Item
         {
             _state = NPCsState.Pursued;
         }
-
         else
         {
             _state = NPCsState.Wandering;
