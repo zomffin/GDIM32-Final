@@ -32,8 +32,8 @@ public class NPCs : Item
     private Vector3 _wanderDirection;
 
     // to be removed when all npcs have animators
-    private bool _hasAnimator; 
-    
+    private bool _hasAnimator = true;
+
     // variables used for drawing Gizmos
     private Vector3 _raycastHitLocation;
     private Vector3 _spherecastHitLocation;
@@ -46,7 +46,8 @@ public class NPCs : Item
         _rigidbody = this.GetComponent<Rigidbody>();
         if (_animator == null)
         {
-            _hasAnimator = false; 
+            _hasAnimator = false;
+
         }
     }
 
