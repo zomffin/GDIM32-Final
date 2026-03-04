@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17ceb0db3bc7a48a29cfb056da3bfb03, type: 3}
+  m_Name: CollectFish
+  m_EditorClassIdentifier: 
+  questID: d021e6ba-1198-4cfb-a8f4-770833f3cb0a
+  questName: 
+  desciption: 
+  objectives:
+  - objectiveID: 
+    desciption: 
+    type: 0
+    _requiredAmount: 0
+    _currentAmount: 0
