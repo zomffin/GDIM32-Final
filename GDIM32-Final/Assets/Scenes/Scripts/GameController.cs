@@ -10,6 +10,7 @@ public class GameController : MonoBehaviour
     [SerializeField] int _itemcount = 0;
     [SerializeField] int _totalItemRequired = 2;
 
+
     private void Awake()
     {
         //This is not working it does not delete whywhwywhywhwywhy
