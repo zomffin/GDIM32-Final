@@ -276,6 +276,7 @@ MonoBehaviour:
   _sprintSpeed: 2
   _turnSpeed: 1
   _jumpForce: 5
+  _jumpWait: 1
   _jumpMask:
     serializedVersion: 2
     m_Bits: 64

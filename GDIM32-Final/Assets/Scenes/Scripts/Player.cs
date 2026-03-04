@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
     [SerializeField] private float _sprintSpeed;
     [SerializeField] private float _turnSpeed;
     [SerializeField] private float _jumpForce;
+    [SerializeField] private float _jumpWait; 
     
 
     [SerializeField] private LayerMask _jumpMask; 
@@ -48,6 +49,7 @@ public class Player : MonoBehaviour
     private Vector3 _forwardmovement;
     private float _sprintMod;
     private bool _isGrounded = true;
+    private float _jumpTimer; 
 
     private bool _hasItem = false;
     private Item _itemHeld;
@@ -109,9 +111,16 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && _isGrounded)
         {
             _isGrounded = false;
+            _jumpTimer = _jumpWait; 
             _playerRigidbody.AddForce(Vector3.up * _jumpForce, ForceMode.Impulse);
         }
 
+        if (!_isGrounded)
+        {
+            _jumpTimer -= Time.deltaTime;
+        }
+        
+        
         if (Input.GetKeyDown(KeyCode.Mouse1) && _hasItem)
         {
             Throw();
@@ -138,8 +147,9 @@ public class Player : MonoBehaviour
             }
 
         }
+        
         if (_clockUI != null)
-    _clockUI.SetActive(_hasItem);
+            _clockUI.SetActive(_hasItem);
     }
 
     private void FixedUpdate()
@@ -150,7 +160,7 @@ public class Player : MonoBehaviour
         newvelocity.y = _playerRigidbody.velocity.y;
         _playerRigidbody.velocity = newvelocity;
 
-        if (!_isGrounded)
+        if (!_isGrounded && _jumpTimer <= 0)
         {
             checkGround(); 
         }
