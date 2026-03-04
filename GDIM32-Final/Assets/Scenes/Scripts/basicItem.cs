@@ -9,7 +9,7 @@ public class basicItem : Item
     void Start()
     {
         _rigidbody = this.GetComponent<Rigidbody>();
-
+        _rigidbody.Sleep();
     }
 
     void Update()

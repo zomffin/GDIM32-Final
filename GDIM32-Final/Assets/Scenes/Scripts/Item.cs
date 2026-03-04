@@ -12,14 +12,17 @@ public abstract class Item : MonoBehaviour
     protected Transform _targetPos; 
     public Rigidbody _rigidbody;
     protected bool _pickedUp = false;
-    protected Vector3 _velocity = Vector3.zero; 
-    
-    
+    protected Vector3 _velocity = Vector3.zero;
+
+    void Awake()
+    {
+        
+    }
     // you have to copy Start and FixedUpdate into child classes cuz they dont inherit ts :-( 
     void Start()
     {
         _rigidbody = this.GetComponent<Rigidbody>();
-        
+        _rigidbody.Sleep();
     }
 
     void FixedUpdate()
@@ -37,6 +40,7 @@ public abstract class Item : MonoBehaviour
         if (!_pickedUp)
         {
             Debug.Log("Picked up");
+            _rigidbody.WakeUp();
             _pickedUp = true;
             target.transform.position = this.transform.position;
             _targetPos = target.transform; 
