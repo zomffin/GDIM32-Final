@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class AnimalItem : NPCs
 {
+    [SerializeField] int ID = 1;
     // This is a child class that doesn't implement anything new from the abstract Item. 
     // We can use this for all items until we have time to try doing special interactions 
     void Start()

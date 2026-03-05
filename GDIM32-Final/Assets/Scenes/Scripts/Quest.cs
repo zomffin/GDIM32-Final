@@ -13,48 +13,63 @@ public class Quest : ScriptableObject
     public List<QuestObjectives> objectives;
 
 
-    private void OnValidate()     //Called when ScriptableObject is Edidted
+    private void OnValidate() //Called when ScriptableObject is Edidted
     {
-        if (string.IsNullOrEmpty(questID))
+
+        questID = questName + Guid.NewGuid().ToString();    //Gives a unique questID
+
+
+    }
+
+}
+
+[System.Serializable] //Store data
+public class QuestObjectives
+{
+    public string objectiveID;
+    public string desciption;
+    public ObjectiveType type;
+
+
+    public int requiredAmount;
+    public int currentAmount;
+
+    public bool IsCompleted => currentAmount >= requiredAmount;
+}
+
+public enum ObjectiveType { CollectItems, TalkNPC }
+
+[System.Serializable]
+public class QuestProgress
+{
+    public Quest quest;
+    public List<QuestObjectives> objectives;
+
+    public QuestProgress(Quest quest)
+    {
+        this.quest = quest;
+        objectives = new List<QuestObjectives>();
+
+        //deep copy...not really sure about the Add function in tutorial 
+        foreach (var obj in objectives)
         {
-            questID = questName + Guid.NewGuid().ToString();    //Gives a unique questID
+            objectives.Add(new QuestObjectives
+            {
+                objectiveID = obj.objectiveID,
+                desciption = obj.desciption,
+                type = obj.type,
+                requiredAmount = obj.requiredAmount,
+                currentAmount = 0
+
+            });
+
         }
 
     }
 
-
-    [System.Serializable] //Store data
-    public class QuestObjectives
-    {
-        public string objectiveID;
-        public string desciption;
-        public ObjectiveType type;
-
-
-        public int _requiredAmount;
-        public int _currentAmount;
-
-        public bool _isCompleted => _currentAmount >= _requiredAmount;
-    }
-
-    public enum ObjectiveType { CollectItems, TalkNPC }
-
-    [System.Serializable]
-    public class QuestProgress
-    {
-        public Quest quest;
-        public List<QuestObjectives> objectives;
-
-        public QuestProgress(Quest quest)
-        {
-            this.quest = quest;
-            objectives = new List<QuestObjectives>();
-
-        }
-
-
-    }
-
+    //
+    public bool IsCompleted => objectives.TrueForAll(o => o.IsCompleted);
+    public string QuestID => quest.questID;
 
 
 }

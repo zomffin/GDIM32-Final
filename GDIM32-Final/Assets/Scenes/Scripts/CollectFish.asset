@@ -12,12 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17ceb0db3bc7a48a29cfb056da3bfb03, type: 3}
   m_Name: CollectFish
   m_EditorClassIdentifier: 
-  questID: d021e6ba-1198-4cfb-a8f4-770833f3cb0a
-  questName: 
-  desciption: 
+  questID: CollectFish89f90f71-5c70-4961-a753-f07d29c1c2df
+  questName: CollectFish
+  desciption: You have to pick the fish up with [E] or mouse and put the finsh in
+    the cauldron.
   objectives:
-  - objectiveID: 
-    desciption: 
+  - objectiveID: 1
+    desciption: Get 2 Fish
     type: 0
-    _requiredAmount: 0
-    _currentAmount: 0
+    requiredAmount: 2
+    currentAmount: 0
