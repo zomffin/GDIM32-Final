@@ -731,7 +731,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f98dd81932e14ee297eb1f19e6db34f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _timeToCorrect: 0
+  _timeToCorrect: 0.1
   _rigidbody: {fileID: 0}
   _player: {fileID: 0}
   _lineOfSightLayers:
