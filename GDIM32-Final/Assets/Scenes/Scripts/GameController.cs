@@ -13,12 +13,14 @@ public class GameController : MonoBehaviour
 
     private void Awake()
     {
+
         //This is not working it does not delete whywhwywhywhwywhy
         if (Instance != null && Instance != this)
         {
             Destroy(this);
             return;
         }
+        
         Instance = this;
 
         //This works:D
@@ -29,7 +31,7 @@ public class GameController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Cauldron.ItemRecieved += HandleItemRecieved;
+        Cauldron.item += HandleItemRecieved;
 
 
     }
@@ -43,9 +45,16 @@ public class GameController : MonoBehaviour
         }
 
     }
-    public void HandleItemRecieved(int item)
+    public void HandleItemRecieved(bool correctItem)
     {
-        _itemcount += item;
+        if (correctItem)
+        {
+            _itemcount++;
+        }
+        else
+        {
+            _itemcount--;
+        }
         Debug.Log(_itemcount);
     }
 }
