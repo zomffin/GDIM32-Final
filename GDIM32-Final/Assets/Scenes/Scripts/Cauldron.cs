@@ -22,7 +22,7 @@ public class CauldronController : MonoBehaviour
 
     void OnTriggerEnter(Collider collision)
     {
-        if (collision.name == _questItem)
+        if (collision.name.Contains(_questItem))
         {
             item?.Invoke(true);
             Destroy(collision.gameObject);
