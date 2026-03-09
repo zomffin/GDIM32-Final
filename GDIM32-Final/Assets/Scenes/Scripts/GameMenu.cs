@@ -11,8 +11,8 @@ public void Play()
         SceneManager.LoadScene(gameSceneName);
     }
 
-public void Quit()
-    {
-        Application.Quit();
-    }
+//public void Quit()
+  //  {
+ //       Application.Quit();
+ //   }
 }
