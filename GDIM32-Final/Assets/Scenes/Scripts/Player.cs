@@ -61,7 +61,7 @@ public class Player : MonoBehaviour
     {
         // Locks the cursor when u click into the game
         Cursor.lockState = CursorLockMode.Locked;
-        GameController.Instance.Cauldron.ItemRecieved += HandleItemRecieved;
+        GameController.Instance.Cauldron.item += HandleItemRecieved;
      
     }
 
@@ -233,7 +233,7 @@ public class Player : MonoBehaviour
         _itemHeld = null;
         _hasItem = false;
     }
-    public void HandleItemRecieved(int item)
+    public void HandleItemRecieved(bool item)
     {
         _itemHeld = null;
         _hasItem = false;

@@ -13,17 +13,17 @@ public class UI : MonoBehaviour
 
     private void Start()
     {
-        _cauldron = FindObjectOfType<CauldronController>();
+        
 
         if (_cauldron != null)
         {
-            _cauldron.ItemRecieved += OnItemReceived;
+            GameController.Instance.Cauldron.item += OnItemReceived;
         }
 
         _checkImage.enabled = false; 
     }
 
-    private void OnItemReceived(int amount)
+    private void OnItemReceived(bool check)
     {
         _checkImage.enabled = true;
     }
