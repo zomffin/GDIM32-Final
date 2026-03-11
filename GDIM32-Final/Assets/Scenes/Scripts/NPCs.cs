@@ -36,7 +36,9 @@ public class NPCs : Item
     private Vector3 _wanderDirection;
 
     [SerializeField] private float _detectCool;
-    private float _detectTimer; 
+    private float _detectTimer;
+    [SerializeField] private float _scaredCool; 
+    private float _scaredTimer;
 
     // to be removed when all npcs have animators
     private bool _hasAnimator = true;
@@ -46,7 +48,8 @@ public class NPCs : Item
     private Vector3 _spherecastHitLocation;
     private bool _hasLineOfSightToPlayer;
     private Vector3 _meToPlayer;
-    private Vector3 _meAwayPlayer; 
+    private Vector3 _meAwayPlayer;
+    private Vector3 _runaway; 
 
     
     
@@ -54,6 +57,7 @@ public class NPCs : Item
     private void Start()
     {
         _rigidbody = this.GetComponent<Rigidbody>();
+        _detectTimer = 0; 
         if (_animator == null)
         {
             _hasAnimator = false;
@@ -87,10 +91,9 @@ public class NPCs : Item
         UpdateState();
         RunState();
 
-        if (_detectTimer > 0.0f)
-        {
-            _detectTimer -= Time.deltaTime;
-        }
+
+        _detectTimer -= Time.deltaTime;
+        _scaredTimer -= Time.deltaTime; 
     }
 
     private void FixedUpdate()
@@ -107,14 +110,15 @@ public class NPCs : Item
         {
             _state = NPCsState.PickedUp;
         }
-        else if (_hasLineOfSightToPlayer)
+        else if (_hasLineOfSightToPlayer || _scaredTimer > 0)
         {
             _state = NPCsState.Pursued;
-            
+            Debug.Log("wahhhh");
         }
-        else
+        else if (_scaredTimer <= 0)
         {
             _state = NPCsState.Wandering;
+            Debug.Log("im normal");
         }
     }
 
@@ -210,7 +214,6 @@ public class NPCs : Item
 
     private void RunPursueState()
     {
-        _detectTimer = _detectCool; 
 
         // zero out y-axis because we only care about moving on x/z plane (ground)
         Vector3 playerPos = _player.position;
@@ -223,11 +226,12 @@ public class NPCs : Item
 
         Quaternion targetRotate = Quaternion.AngleAxis(Random.Range(-30f, 30f), Vector3.up);
 
-        Vector3 targetPos = transform.position + (_meAwayPlayer * 5); 
+        _runaway = transform.position + (_meAwayPlayer * 5); 
         
-
+        
+        
         RotateTowards(_meAwayPlayer);
-        WalkTowards(targetPos);
+        WalkTowards(_runaway);
     }
 
     private void RotateTowards(Vector3 direction)
@@ -259,11 +263,22 @@ public class NPCs : Item
     {
         if (other.gameObject.CompareTag(_playerTag) && _detectTimer <= 0)
         {
+            Debug.Log("player entered sight");
+            _scaredTimer = _scaredCool; 
             _hasLineOfSightToPlayer = true;
         }
         else
         {
+            Debug.Log("dat is not the player");
             _hasLineOfSightToPlayer = false; 
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag(_playerTag) && _detectTimer <= 0)
+        {
+            _detectTimer = _detectCool; 
         }
     }
 
@@ -324,6 +339,8 @@ public class NPCs : Item
         }
 
         Gizmos.color = Color.magenta;
+        
+        Gizmos.DrawSphere(_runaway, 0.1f);
     }
 }
 

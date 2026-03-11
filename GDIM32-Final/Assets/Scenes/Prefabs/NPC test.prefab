@@ -137,13 +137,15 @@ MonoBehaviour:
   _obstacleCheckDistance: 1
   _obstacleCheckRadius: 1
   _stopDistance: 0.5
-  _rotateSpeed: 1
+  _rotateSpeed: 20
   _walkSpeed: 5
   _lineOfSightMaxDistance: 6
   _raycastStartOffset: {x: 0, y: 0, z: 0}
   _rigidBody: {fileID: 761761719905720207}
   _renderer: {fileID: 8873274823132637768}
   _animator: {fileID: 0}
+  _detectCool: 2
+  _scaredCool: 10
 --- !u!114 &3043194713369061200
 MonoBehaviour:
   m_ObjectHideFlags: 0
