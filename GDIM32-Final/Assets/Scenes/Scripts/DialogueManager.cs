@@ -27,7 +27,7 @@ public class DialogueManager : MonoBehaviour
         //if (Vector3.Distance(transform.position, //GameController.Instance.Player.transform.position) < _interactionDistance)
         //{
 
-        if (!_waitingForPlayerResponse && Input.GetKeyDown(KeyCode.Space))
+        if (!_waitingForPlayerResponse && Input.GetKeyDown(KeyCode.E))
         {
             AdvanceDialogue();
         }
