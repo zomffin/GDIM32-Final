@@ -10,17 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 17ca79558753b4a039a3a7fd90ad105f, type: 3}
-  m_Name: OpeningTest
+  m_Name: ShowLoveInterest
   m_EditorClassIdentifier: 
   _lines:
-  - HIii
-  - Nice to meet you
-  - You look Hot..
+  - Oh you are sure?
+  - It only me and you from now on.
+  - Don't you dare think about the other two.
+  - Chose me.
   _thoughtBubbleSprite: {fileID: 0}
   _playerReplyOptions:
-  - I love you too
-  - GO AWAY
-  - Let me think about it..
-  _npcReplies:
-  - {fileID: 11400000, guid: ea6d9588a52704eccbbe08ba3afeb8ac, type: 2}
-  - {fileID: 11400000, guid: ea6d9588a52704eccbbe08ba3afeb8ac, type: 2}
+  - Yes you.
+  - Witch 2
+  - Witch 3
+  _npcReplies: []

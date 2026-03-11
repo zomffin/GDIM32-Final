@@ -27,10 +27,8 @@ public class DialogueManager : MonoBehaviour
 
 
 
-        if (Vector3.Distance(transform.position, GameController.Instance.Player.transform.position) < _interactionDistance)
+        if (Vector3.Distance(transform.position, GameController.Instance.Player.transform.position) <= _interactionDistance)
         {
-
-
 
 
             if (!_waitingForPlayerResponse && Input.GetKeyDown(KeyCode.Q))
@@ -64,7 +62,7 @@ public class DialogueManager : MonoBehaviour
         {
             // show player dialogue options, if there are any
             _waitingForPlayerResponse = true;
-            //_dialogue.ShowPlayerOptions(_currentNode._playerReplyOptions);
+            _dialogue.ShowPlayerOptions(_currentNode._playerReplyOptions);
         }
         else
         {
