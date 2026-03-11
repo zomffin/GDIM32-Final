@@ -22,6 +22,12 @@ public class CauldronController : MonoBehaviour
 
     void OnTriggerEnter(Collider collision)
     {
+        if (_questItem == null)
+        {
+            Debug.Log("You don't have a quest");
+            return;
+        }
+        
         if (collision.name.Contains(_questItem))
         {
             item?.Invoke(true);
