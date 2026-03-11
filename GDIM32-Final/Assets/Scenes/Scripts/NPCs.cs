@@ -1,9 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Numerics;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Assertions;
+using Random = UnityEngine.Random;
 using Vector3 = UnityEngine.Vector3;
 
 public class NPCs : Item
@@ -34,6 +35,9 @@ public class NPCs : Item
     private float _wanderTime;
     private Vector3 _wanderDirection;
 
+    [SerializeField] private float _detectCool;
+    private float _detectTimer; 
+
     // to be removed when all npcs have animators
     private bool _hasAnimator = true;
 
@@ -42,7 +46,10 @@ public class NPCs : Item
     private Vector3 _spherecastHitLocation;
     private bool _hasLineOfSightToPlayer;
     private Vector3 _meToPlayer;
+    private Vector3 _meAwayPlayer; 
 
+    
+    
 
     private void Start()
     {
@@ -79,6 +86,11 @@ public class NPCs : Item
 
         UpdateState();
         RunState();
+
+        if (_detectTimer > 0.0f)
+        {
+            _detectTimer -= Time.deltaTime;
+        }
     }
 
     private void FixedUpdate()
@@ -95,9 +107,10 @@ public class NPCs : Item
         {
             _state = NPCsState.PickedUp;
         }
-        else if (HasLineOfSightToPlayer())
+        else if (_hasLineOfSightToPlayer)
         {
             _state = NPCsState.Pursued;
+            
         }
         else
         {
@@ -197,6 +210,7 @@ public class NPCs : Item
 
     private void RunPursueState()
     {
+        _detectTimer = _detectCool; 
 
         // zero out y-axis because we only care about moving on x/z plane (ground)
         Vector3 playerPos = _player.position;
@@ -204,10 +218,16 @@ public class NPCs : Item
 
         // get vector pointing from duck to target point
         Vector3 me = new Vector3(transform.position.x, 0, transform.position.z);
-        _meToPlayer = (playerPos - me).normalized;
+        //_meToPlayer = (playerPos - me).normalized;
+        _meAwayPlayer = (me - playerPos).normalized;
 
-        RotateTowards(_meToPlayer);
-        WalkTowards(playerPos);
+        Quaternion targetRotate = Quaternion.AngleAxis(Random.Range(-30f, 30f), Vector3.up);
+
+        Vector3 targetPos = transform.position + (_meAwayPlayer * 5); 
+        
+
+        RotateTowards(_meAwayPlayer);
+        WalkTowards(targetPos);
     }
 
     private void RotateTowards(Vector3 direction)
@@ -235,7 +255,19 @@ public class NPCs : Item
         transform.Translate(meToTarget * _walkSpeed * Time.deltaTime, Space.World);
     }
 
-    private bool HasLineOfSightToPlayer()
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag(_playerTag) && _detectTimer <= 0)
+        {
+            _hasLineOfSightToPlayer = true;
+        }
+        else
+        {
+            _hasLineOfSightToPlayer = false; 
+        }
+    }
+
+    /*private bool HasLineOfSightToPlayer()
     {
         _hasLineOfSightToPlayer = false;
         RaycastHit hitInfo;
@@ -252,7 +284,7 @@ public class NPCs : Item
         }
 
         return _hasLineOfSightToPlayer;
-    }
+    }*/
 
     private void OnDrawGizmos()
     {
@@ -275,7 +307,7 @@ public class NPCs : Item
         // draw direction we want to move in based on state we're in 
         if (_state == NPCsState.Wandering)
         {
-            Gizmos.color = Color.yellow;
+            Gizmos.color = Color.cyan;
             Gizmos.DrawRay(transform.position, _wanderDirection);
 
             // also visualize spherecast checking for obstacles
@@ -287,9 +319,11 @@ public class NPCs : Item
         }
         else if (_state == NPCsState.Pursued)
         {
-            Gizmos.color = Color.yellow;
+            Gizmos.color = Color.white;
             Gizmos.DrawRay(transform.position, _meToPlayer);
         }
+
+        Gizmos.color = Color.magenta;
     }
 }
 
