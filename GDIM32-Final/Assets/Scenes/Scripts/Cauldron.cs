@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+using TMPro;
+
 
 public class CauldronController : MonoBehaviour
 {
@@ -11,14 +13,16 @@ public class CauldronController : MonoBehaviour
 
     public delegate void newQuest(string newItem);
 
-    public event newQuest quest; 
+    public event newQuest quest;
 
-    
+
     private string _questItem;
-    private bool _questComplete = true; 
-    
-    
-    
+    private bool _questComplete = true;
+
+    [SerializeField] private TMP_Text _questText;
+
+
+
 
     void OnTriggerEnter(Collider collision)
     {
@@ -27,7 +31,7 @@ public class CauldronController : MonoBehaviour
             Debug.Log("You don't have a quest");
             return;
         }
-        
+
         if (collision.name.Contains(_questItem))
         {
             item?.Invoke(true);
@@ -46,9 +50,11 @@ public class CauldronController : MonoBehaviour
 
     public void RecieveQuest(string newItem)
     {
+        Debug.Log(newItem);
+        _questText.text = newItem;
         if (_questComplete)
         {
-            quest?.Invoke(newItem); 
+            quest?.Invoke(newItem);
             _questItem = newItem;
             _questComplete = false;
         }
