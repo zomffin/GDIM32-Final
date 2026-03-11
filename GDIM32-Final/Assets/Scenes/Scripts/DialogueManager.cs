@@ -15,33 +15,39 @@ public class DialogueManager : MonoBehaviour
     private bool _runningDialogue;
     private bool _waitingForPlayerResponse;
 
-    private void Start()
+    void Start()
     {
         _currentNode = _dialogueStartNode;
+
     }
 
-    private void Update()
+
+    public void Update()
     {
 
 
-        //if (Vector3.Distance(transform.position, //GameController.Instance.Player.transform.position) < _interactionDistance)
-        //{
 
-        if (!_waitingForPlayerResponse && Input.GetKeyDown(KeyCode.E))
+        if (Vector3.Distance(transform.position, GameController.Instance.Player.transform.position) < _interactionDistance)
         {
-            AdvanceDialogue();
-        }
-        else if (!_runningDialogue)
-        {
-            Debug.Log("conversation end");
 
+
+
+
+            if (!_waitingForPlayerResponse && Input.GetKeyDown(KeyCode.Q))
+            {
+                AdvanceDialogue();
+            }
+            else if (!_runningDialogue)
+            {
+
+
+            }
         }
-        // }
-        /**else
+        else
         {
             EndDialogue();
         }
-        **/
+
     }
 
     private void AdvanceDialogue()

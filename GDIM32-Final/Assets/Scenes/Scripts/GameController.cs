@@ -7,6 +7,7 @@ public class GameController : MonoBehaviour
 {
     public static GameController Instance { get; private set; }
     public CauldronController Cauldron { get; private set; }
+    public GameObject Player { get; private set; }
     [SerializeField] int _itemcount = 0;
     [SerializeField] int _totalItemRequired = 2;
 
@@ -20,12 +21,18 @@ public class GameController : MonoBehaviour
             Destroy(this);
             return;
         }
-        
+
         Instance = this;
 
         //This works:D
         GameObject cauldronObj = GameObject.FindWithTag("Cauldron");
         Cauldron = cauldronObj.GetComponent<CauldronController>();
+
+        Player = GameObject.FindWithTag("Player");
+        if (Player == null)
+        {
+            Debug.Log("Cant find player");
+        }
 
     }
     // Start is called before the first frame update

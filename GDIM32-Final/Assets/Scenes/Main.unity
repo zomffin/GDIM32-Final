@@ -2558,7 +2558,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 060b02723414d433991d4c16cbd689a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _interactionDistance: 2
+  _interactionDistance: 10
   _dialogue: {fileID: 2007636992}
   _dialogueStartNode: {fileID: 11400000, guid: 943b079454e68468ab2481c110d333bb, type: 2}
 --- !u!1 &705507993
@@ -7412,6 +7412,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6763335775376626387, guid: 6c5cc65c6bfc56349ae419cfb764c257, type: 3}
       propertyPath: m_Name
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 6763335775376626387, guid: 6c5cc65c6bfc56349ae419cfb764c257, type: 3}
+      propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents:
