@@ -24,8 +24,7 @@ public class DialogueManager : MonoBehaviour
 
     public void Update()
     {
-
-
+        Debug.Log(Vector3.Distance(transform.position, GameController.Instance.Player.transform.position));
 
         if (Vector3.Distance(transform.position, GameController.Instance.Player.transform.position) <= _interactionDistance)
         {

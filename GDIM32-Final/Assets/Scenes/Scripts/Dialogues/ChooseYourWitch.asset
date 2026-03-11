@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17ca79558753b4a039a3a7fd90ad105f, type: 3}
+  m_Name: ChooseYourWitch
+  m_EditorClassIdentifier: 
+  _lines:
+  - Choose a magic being to rizz with
+  - This magic will make you rizzy once you complete their quests
+  - You can only choose one person.
+  _thoughtBubbleSprite: {fileID: 0}
+  _playerReplyOptions:
+  - Baby Yaga
+  - Chaser
+  - ???
+  _npcReplies:
+  - {fileID: 11400000, guid: 943b079454e68468ab2481c110d333bb, type: 2}
