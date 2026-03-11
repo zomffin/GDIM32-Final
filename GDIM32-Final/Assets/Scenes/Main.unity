@@ -951,6 +951,11 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 114379781180416116, guid: ed65e1367e1dc4c299cf36c600a14020, type: 3}
+--- !u!1 &259695229 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 496099013504013941, guid: c942ff9b8b199ca4db520b98edaafe36, type: 3}
+  m_PrefabInstance: {fileID: 447040821}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &261715288
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2071,27 +2076,35 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: -3208837208883132049, guid: 1480b979371e54a7d80cee7527b2efbb, type: 3}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3043194713369061200, guid: c942ff9b8b199ca4db520b98edaafe36, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 496099013504013941, guid: c942ff9b8b199ca4db520b98edaafe36, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 447040830}
   m_SourcePrefab: {fileID: 100100000, guid: c942ff9b8b199ca4db520b98edaafe36, type: 3}
 --- !u!4 &447040822 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6284954757359253901, guid: c942ff9b8b199ca4db520b98edaafe36, type: 3}
   m_PrefabInstance: {fileID: 447040821}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &447040825 stripped
+--- !u!114 &447040830
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3043194713369061200, guid: c942ff9b8b199ca4db520b98edaafe36, type: 3}
-  m_PrefabInstance: {fileID: 447040821}
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 259695229}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 060b02723414d433991d4c16cbd689a1, type: 3}
+  m_Script: {fileID: 11500000, guid: 003d673a2071c41f6a189571c0f83249, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _interactionDistance: 20
+  _dialogue: {fileID: 1816341680}
+  _dialogueStartNode: {fileID: 11400000, guid: de6fb8703a042437e9ba024600cf5409, type: 2}
 --- !u!1 &471669517
 GameObject:
   m_ObjectHideFlags: 0
@@ -6195,8 +6208,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 447040825}
-        m_TargetAssemblyTypeName: DialogueManager, Assembly-CSharp
+      - m_Target: {fileID: 447040830}
+        m_TargetAssemblyTypeName: ChooseWitchManager, Assembly-CSharp
         m_MethodName: SelectedOption
         m_Mode: 3
         m_Arguments:
@@ -8998,7 +9011,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 496099013504013941, guid: c942ff9b8b199ca4db520b98edaafe36, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1845313166064498358, guid: c942ff9b8b199ca4db520b98edaafe36, type: 3}
       propertyPath: _player
@@ -9030,7 +9043,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6284954757359253901, guid: c942ff9b8b199ca4db520b98edaafe36, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 22.3
+      value: 59.78
       objectReference: {fileID: 0}
     - target: {fileID: 6284954757359253901, guid: c942ff9b8b199ca4db520b98edaafe36, type: 3}
       propertyPath: m_LocalRotation.w

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Assertions;
 
-public class DialogueManager : MonoBehaviour
+public class ChooseWitchManager : MonoBehaviour
 {
     [SerializeField] private float _interactionDistance = 2.0f;
     [SerializeField] private DialogueUI _dialogue;
@@ -82,10 +82,17 @@ public class DialogueManager : MonoBehaviour
 
     public void SelectedOption(int option)
     {
-        _currentLine = 0;
         _waitingForPlayerResponse = false;
 
-        _currentNode = _currentNode._npcReplies[option];
-        AdvanceDialogue();
+        if (option == 0)
+        {
+            Debug.Log("Get Fish");
+            GameController.Instance.Cauldron.RecieveQuest("fish");
+
+        }
+        else
+        {
+            Debug.Log("Get Lost");
+        }
     }
 }
