@@ -1,14 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Numerics;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Assertions;
+using Vector3 = UnityEngine.Vector3;
+
 public class NPCs : Item
 {
     //highkey just touched reids code 
     private enum NPCsState
     {
-        Wandering, Pursued, PickedUp
+        Idle, Wandering, Pursued, PickedUp
     }
 
 
@@ -47,7 +50,6 @@ public class NPCs : Item
         if (_animator == null)
         {
             _hasAnimator = false;
-
         }
     }
 
@@ -239,7 +241,7 @@ public class NPCs : Item
         RaycastHit hitInfo;
         // fire a raycast pointing from the duck (_raycastStart) in the direction of the player (_raycastDir)
         // and only going as far as _lineOfSightMaxDistance
-        if (Physics.Raycast(_raycastStart, _raycastDir, out hitInfo, _lineOfSightMaxDistance, _lineOfSightLayers.value))
+        if (Physics.BoxCast(_raycastStart, Vector3.one,_raycastDir, out hitInfo, transform.rotation,_lineOfSightMaxDistance, _lineOfSightLayers.value))
         {
             _raycastHitLocation = hitInfo.point;
             // check if the object we hit was actually the player
