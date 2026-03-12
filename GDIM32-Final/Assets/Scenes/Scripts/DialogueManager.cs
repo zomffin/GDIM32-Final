@@ -61,6 +61,7 @@ public class DialogueManager : MonoBehaviour
         {
             // show player dialogue options, if there are any
             _waitingForPlayerResponse = true;
+            Cursor.lockState = CursorLockMode.Confined;
             _dialogue.ShowPlayerOptions(_currentNode._playerReplyOptions);
         }
         else
@@ -84,7 +85,7 @@ public class DialogueManager : MonoBehaviour
     {
         _currentLine = 0;
         _waitingForPlayerResponse = false;
-
+        Cursor.lockState = CursorLockMode.Locked;
         _currentNode = _currentNode._npcReplies[option];
         AdvanceDialogue();
     }
