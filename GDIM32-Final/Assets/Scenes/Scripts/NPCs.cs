@@ -10,46 +10,46 @@ using Vector3 = UnityEngine.Vector3;
 public class NPCs : Item
 {
     //highkey just touched reids code 
-    private enum NPCsState
+    protected enum NPCsState
     {
         Idle, Wandering, Pursued, PickedUp
     }
 
 
-    [SerializeField] private Transform _player;
-    [SerializeField] private LayerMask _lineOfSightLayers;
-    [SerializeField] private float _wanderTimeMax = 5.0f;
-    [SerializeField] private float _obstacleCheckDistance = 1.0f;
-    [SerializeField] private float _obstacleCheckRadius = 1.0f;
-    [SerializeField] private float _stopDistance = 0.5f;
-    [SerializeField] private float _rotateSpeed;
-    [SerializeField] private float _walkSpeed;
-    [SerializeField] private float _lineOfSightMaxDistance;
-    [SerializeField] private Vector3 _raycastStartOffset;
-    [SerializeField] private Rigidbody _rigidBody;
-    [SerializeField] private MeshRenderer _renderer;
-    [SerializeField] private Animator _animator;
+    [SerializeField] protected Transform _player;
+    [SerializeField] protected LayerMask _lineOfSightLayers;
+    [SerializeField] protected float _wanderTimeMax = 5.0f;
+    [SerializeField] protected float _obstacleCheckDistance = 1.0f;
+    [SerializeField] protected float _obstacleCheckRadius = 1.0f;
+    [SerializeField] protected float _stopDistance = 0.5f;
+    [SerializeField] protected float _rotateSpeed;
+    [SerializeField] protected float _walkSpeed;
+    [SerializeField] protected float _lineOfSightMaxDistance;
+    [SerializeField] protected Vector3 _raycastStartOffset;
+    [SerializeField] protected Rigidbody _rigidBody;
+    [SerializeField] protected MeshRenderer _renderer;
+    [SerializeField] protected Animator _animator;
 
-    private string _playerTag = "PlayerObj";
-    private NPCsState _state;
-    private float _wanderTime;
-    private Vector3 _wanderDirection;
+    protected string _playerTag = "PlayerObj";
+    protected NPCsState _state;
+    protected float _wanderTime;
+    protected Vector3 _wanderDirection;
 
-    [SerializeField] private float _detectCool;
-    private float _detectTimer;
-    [SerializeField] private float _scaredCool; 
-    private float _scaredTimer;
+    [SerializeField] protected float _detectCool;
+    protected float _detectTimer;
+    [SerializeField] protected float _scaredCool; 
+    protected float _scaredTimer;
 
     // to be removed when all npcs have animators
-    private bool _hasAnimator = true;
+    protected bool _hasAnimator = true;
 
     // variables used for drawing Gizmos
-    private Vector3 _raycastHitLocation;
-    private Vector3 _spherecastHitLocation;
-    private bool _hasLineOfSightToPlayer;
-    private Vector3 _meToPlayer;
-    private Vector3 _meAwayPlayer;
-    private Vector3 _runaway; 
+    protected Vector3 _raycastHitLocation;
+    protected Vector3 _spherecastHitLocation;
+    protected bool _hasLineOfSightToPlayer;
+    protected Vector3 _meToPlayer;
+    protected Vector3 _meAwayPlayer;
+    protected Vector3 _runaway; 
 
     
     
@@ -154,7 +154,7 @@ public class NPCs : Item
 
 
 
-    private void RunWanderState()
+    protected void RunWanderState()
     {
         if (_hasAnimator)
         {
@@ -183,7 +183,7 @@ public class NPCs : Item
         transform.Translate(_wanderDirection * _walkSpeed * Time.deltaTime, Space.World);
     }
 
-    private void GetNewWanderDirection()
+    protected void GetNewWanderDirection()
     {
         // get a random 2d location inside a circle and treat it as a direction
         Vector3 randomDir = UnityEngine.Random.insideUnitCircle;
@@ -191,7 +191,7 @@ public class NPCs : Item
         _wanderDirection = _wanderDirection.normalized;
     }
 
-    private bool HasCloseObstacles()
+    protected bool HasCloseObstacles()
     {
         // do a spherecast in the direction we want to move in
         // if we hit anything, we'll check a new direction
@@ -212,7 +212,7 @@ public class NPCs : Item
         return hasObstacle;
     }
 
-    private void RunPursueState()
+    protected void RunPursueState()
     {
 
         // zero out y-axis because we only care about moving on x/z plane (ground)
@@ -234,14 +234,14 @@ public class NPCs : Item
         WalkTowards(_runaway);
     }
 
-    private void RotateTowards(Vector3 direction)
+    protected void RotateTowards(Vector3 direction)
     {
         Vector3 currentForward = new Vector3(transform.forward.x, 0, transform.forward.z);
         Vector3 newForward = Vector3.RotateTowards(currentForward, direction, _rotateSpeed * Time.deltaTime, 0.0f);
         transform.forward = newForward;
     }
 
-    private void WalkTowards(Vector3 point)
+    protected void WalkTowards(Vector3 point)
     {
         Vector3 me = new Vector3(transform.position.x, 0, transform.position.z);
 
