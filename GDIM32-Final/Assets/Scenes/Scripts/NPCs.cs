@@ -57,6 +57,8 @@ public class NPCs : Item
     private void Start()
     {
         _rigidbody = this.GetComponent<Rigidbody>();
+        _player = GameController.Instance.Player.transform;
+        
         _detectTimer = 0; 
         if (_animator == null)
         {

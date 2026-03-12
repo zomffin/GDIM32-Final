@@ -15,6 +15,9 @@ public class Witch : NPCs
     {
         _dialogueManager = this.GetComponent<DialogueManager>();
         _rigidbody = this.GetComponent<Rigidbody>();
+        _player = GameController.Instance.Player.transform;
+
+        
         _detectTimer = 0; 
         if (_animator == null)
         {

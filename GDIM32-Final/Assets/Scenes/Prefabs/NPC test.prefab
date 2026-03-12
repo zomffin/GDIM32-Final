@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7548226796226274452}
   - component: {fileID: 8873274823132637768}
   - component: {fileID: 761761719905720207}
-  - component: {fileID: 1845313166064498358}
+  - component: {fileID: 7011321628518048235}
   - component: {fileID: 3043194713369061200}
   - component: {fileID: 8019884263570698059}
   - component: {fileID: 5635329191649604649}
@@ -115,7 +115,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!114 &1845313166064498358
+--- !u!114 &7011321628518048235
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -124,7 +124,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 496099013504013941}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e11f0195dd2ff4eb4b6c54c2661927fe, type: 3}
+  m_Script: {fileID: 11500000, guid: a44919784434261478ac55691af62e26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _timeToCorrect: 0.1
@@ -139,10 +139,10 @@ MonoBehaviour:
   _stopDistance: 0.5
   _rotateSpeed: 20
   _walkSpeed: 5
-  _lineOfSightMaxDistance: 6
+  _lineOfSightMaxDistance: 0
   _raycastStartOffset: {x: 0, y: 0, z: 0}
-  _rigidBody: {fileID: 761761719905720207}
-  _renderer: {fileID: 8873274823132637768}
+  _rigidBody: {fileID: 0}
+  _renderer: {fileID: 0}
   _animator: {fileID: 0}
   _detectCool: 2
   _scaredCool: 10
