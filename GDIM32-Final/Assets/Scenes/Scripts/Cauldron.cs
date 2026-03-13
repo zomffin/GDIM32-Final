@@ -36,13 +36,13 @@ public class CauldronController : MonoBehaviour
         if (collision.name.Contains(_questItem))
         {
             item?.Invoke(true);
-            Debug.Log("You Got the fish yayyy");
+
             Destroy(collision.gameObject);
         }
         else
         {
             item?.Invoke(false);
-            Debug.Log("UGhhhh NOt Thiss!!!");
+
         }
     }
 

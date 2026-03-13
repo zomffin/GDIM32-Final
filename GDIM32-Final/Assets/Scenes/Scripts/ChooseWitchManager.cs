@@ -87,15 +87,12 @@ public class ChooseWitchManager : MonoBehaviour
 
         if (option == 0)
         {
-            Debug.Log("Get Fish");
             GameController.Instance.Cauldron.RecieveQuest("fish");
-
-
-
         }
+
         else
         {
-            Debug.Log("Get Lost");
+            Debug.Log("Quest Not implemented yet.");
 
 
         }

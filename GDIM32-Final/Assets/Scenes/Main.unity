@@ -5730,7 +5730,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 496099013504013941, guid: c942ff9b8b199ca4db520b98edaafe36, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1845313166064498358, guid: c942ff9b8b199ca4db520b98edaafe36, type: 3}
       propertyPath: _player
@@ -5745,8 +5745,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2007636992}
     - target: {fileID: 3043194713369061200, guid: c942ff9b8b199ca4db520b98edaafe36, type: 3}
+      propertyPath: _questCompleteNode
+      value: 
+      objectReference: {fileID: 11400000, guid: fad905303253c400288046f0c05421c7, type: 2}
+    - target: {fileID: 3043194713369061200, guid: c942ff9b8b199ca4db520b98edaafe36, type: 3}
       propertyPath: _interactionDistance
-      value: 20
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5635329191649604649, guid: c942ff9b8b199ca4db520b98edaafe36, type: 3}
       propertyPath: m_Center.z
@@ -6135,8 +6139,16 @@ PrefabInstance:
       value: Cauldron
       objectReference: {fileID: 0}
     - target: {fileID: 1749704678517325797, guid: 00e7b062a7d6f2048b280d7f8a861c63, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1749704678517325797, guid: 00e7b062a7d6f2048b280d7f8a861c63, type: 3}
       propertyPath: m_TagString
       value: Cauldron
+      objectReference: {fileID: 0}
+    - target: {fileID: 2887510733785500741, guid: 00e7b062a7d6f2048b280d7f8a861c63, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2887510733785500741, guid: 00e7b062a7d6f2048b280d7f8a861c63, type: 3}
       propertyPath: m_TagString
@@ -6593,7 +6605,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6763335775376626387, guid: 6c5cc65c6bfc56349ae419cfb764c257, type: 3}
       propertyPath: m_TagString
-      value: Player
+      value: Untagged
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2960195746977469079, guid: 6c5cc65c6bfc56349ae419cfb764c257, type: 3}

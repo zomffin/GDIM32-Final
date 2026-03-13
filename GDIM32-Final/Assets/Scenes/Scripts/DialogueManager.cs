@@ -9,6 +9,7 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private float _interactionDistance = 2.0f;
     [SerializeField] private DialogueUI _dialogue;
     [SerializeField] private DialogueNode _dialogueStartNode;
+    [SerializeField] private DialogueNode _questCompleteNode;
 
     private DialogueNode _currentNode;
     private int _currentLine = 0;
@@ -18,6 +19,7 @@ public class DialogueManager : MonoBehaviour
     void Start()
     {
         _currentNode = _dialogueStartNode;
+        GameController.Instance.Cauldron.item += HandleItemRecieved;
 
     }
 
@@ -30,7 +32,7 @@ public class DialogueManager : MonoBehaviour
         {
 
 
-            if (!_waitingForPlayerResponse && (Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKeyDown(KeyCode.E)) )
+            if (!_waitingForPlayerResponse && (Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKeyDown(KeyCode.E)))
             {
                 AdvanceDialogue();
             }
@@ -88,5 +90,14 @@ public class DialogueManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         _currentNode = _currentNode._npcReplies[option];
         AdvanceDialogue();
+    }
+    public void HandleItemRecieved(bool correctItem)
+    {
+        if (correctItem)
+        {
+            _currentNode = _questCompleteNode;
+            _currentLine = 0;
+
+        }
     }
 }
