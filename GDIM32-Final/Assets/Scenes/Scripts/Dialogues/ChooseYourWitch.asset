@@ -20,6 +20,5 @@ MonoBehaviour:
   _playerReplyOptions:
   - Baby Yaga
   - Chaser
-  - ???
-  _npcReplies:
-  - {fileID: 11400000, guid: 943b079454e68468ab2481c110d333bb, type: 2}
+  - Let me think about this more..
+  _npcReplies: []

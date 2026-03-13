@@ -100,7 +100,6 @@ public class DialogueManager : MonoBehaviour
         {
             Debug.Log("I will say something else this time :3");
             _currentNode = _questCompleteNode;
-            _currentLine = 0;
 
         }
     }
