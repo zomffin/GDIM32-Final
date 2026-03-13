@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class GameController : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class GameController : MonoBehaviour
     public GameObject Player { get; private set; }
     [SerializeField] int _itemcount = 0;
     [SerializeField] int _totalItemRequired = 2;
+    [SerializeField] private TMP_Text _questComplete;
 
 
     private void Awake()
@@ -56,11 +58,12 @@ public class GameController : MonoBehaviour
     {
         if (correctItem)
         {
+            _questComplete.text = "Quest Completed, Go back to Witch";
             _itemcount++;
         }
         else
         {
-            _itemcount--;
+            _questComplete.text = "Watch its this one!!!";
         }
         Debug.Log(_itemcount);
     }

@@ -61,6 +61,7 @@ public class ChooseWitchManager : MonoBehaviour
         {
             // show player dialogue options, if there are any
             _waitingForPlayerResponse = true;
+            Cursor.lockState = CursorLockMode.Confined;
             _dialogue.ShowPlayerOptions(_currentNode._playerReplyOptions);
         }
         else
@@ -89,10 +90,17 @@ public class ChooseWitchManager : MonoBehaviour
             Debug.Log("Get Fish");
             GameController.Instance.Cauldron.RecieveQuest("fish");
 
+
+
         }
         else
         {
             Debug.Log("Get Lost");
+
+
         }
+        Cursor.lockState = CursorLockMode.Locked;
+
+        EndDialogue();
     }
 }

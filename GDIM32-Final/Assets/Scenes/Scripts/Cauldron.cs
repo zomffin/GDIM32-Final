@@ -26,6 +26,7 @@ public class CauldronController : MonoBehaviour
 
     void OnTriggerEnter(Collider collision)
     {
+        Debug.Log(collision.name);
         if (_questItem == null)
         {
             Debug.Log("You don't have a quest");
@@ -35,11 +36,13 @@ public class CauldronController : MonoBehaviour
         if (collision.name.Contains(_questItem))
         {
             item?.Invoke(true);
+            Debug.Log("You Got the fish yayyy");
             Destroy(collision.gameObject);
         }
         else
         {
             item?.Invoke(false);
+            Debug.Log("UGhhhh NOt Thiss!!!");
         }
     }
 
