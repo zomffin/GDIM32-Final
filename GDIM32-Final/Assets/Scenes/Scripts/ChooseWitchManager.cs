@@ -30,7 +30,7 @@ public class ChooseWitchManager : MonoBehaviour
         {
 
 
-            if (!_waitingForPlayerResponse && Input.GetKeyDown(KeyCode.Q))
+            if (!_waitingForPlayerResponse && (Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKeyDown(KeyCode.E)))
             {
                 AdvanceDialogue();
             }
