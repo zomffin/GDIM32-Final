@@ -10,6 +10,7 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private DialogueUI _dialogue;
     [SerializeField] private DialogueNode _dialogueStartNode;
     [SerializeField] private DialogueNode _questCompleteNode;
+    [SerializeField] private GameObject _interactionPrompt;
 
     private DialogueNode _currentNode;
     private int _currentLine = 0;
@@ -30,6 +31,7 @@ public class DialogueManager : MonoBehaviour
 
         if (Vector3.Distance(transform.position, GameController.Instance.Player.transform.position) <= _interactionDistance)
         {
+            _interactionPrompt.SetActive(true);
 
 
             if (!_waitingForPlayerResponse && (Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKeyDown(KeyCode.E)))
@@ -80,6 +82,7 @@ public class DialogueManager : MonoBehaviour
         _currentNode = _dialogueStartNode;
         _currentLine = 0;
         _dialogue.HideDialogue();
+        _interactionPrompt.SetActive(false);
 
     }
 

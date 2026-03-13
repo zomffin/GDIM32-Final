@@ -1320,7 +1320,8 @@ PrefabInstance:
       objectReference: {fileID: -3208837208883132049, guid: 1480b979371e54a7d80cee7527b2efbb, type: 3}
     m_RemovedComponents:
     - {fileID: 3043194713369061200, guid: c942ff9b8b199ca4db520b98edaafe36, type: 3}
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 6779931921562569796, guid: c942ff9b8b199ca4db520b98edaafe36, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 496099013504013941, guid: c942ff9b8b199ca4db520b98edaafe36, type: 3}
@@ -5751,6 +5752,34 @@ PrefabInstance:
     - target: {fileID: 3043194713369061200, guid: c942ff9b8b199ca4db520b98edaafe36, type: 3}
       propertyPath: _interactionDistance
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5383002667706496884, guid: c942ff9b8b199ca4db520b98edaafe36, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5383002667706496884, guid: c942ff9b8b199ca4db520b98edaafe36, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5383002667706496884, guid: c942ff9b8b199ca4db520b98edaafe36, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5383002667706496884, guid: c942ff9b8b199ca4db520b98edaafe36, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 5383002667706496884, guid: c942ff9b8b199ca4db520b98edaafe36, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.11
+      objectReference: {fileID: 0}
+    - target: {fileID: 5383002667706496884, guid: c942ff9b8b199ca4db520b98edaafe36, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.793
+      objectReference: {fileID: 0}
+    - target: {fileID: 5383002667706496884, guid: c942ff9b8b199ca4db520b98edaafe36, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5635329191649604649, guid: c942ff9b8b199ca4db520b98edaafe36, type: 3}
       propertyPath: m_Center.z
