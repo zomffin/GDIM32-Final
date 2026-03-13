@@ -12,11 +12,10 @@ public class CauldronController : MonoBehaviour
     public event ItemRecieved item;
 
     public delegate void newQuest(string newItem);
-
     public event newQuest quest;
 
 
-    private string _questItem;
+    [SerializeField] private string _questItem;
     private bool _questComplete = true;
 
     [SerializeField] private TMP_Text _questText;
@@ -32,6 +31,8 @@ public class CauldronController : MonoBehaviour
             Debug.Log("You don't have a quest");
             return;
         }
+        
+        Debug.Log(_questItem + " is quest item, sending out event");
 
         if (collision.name.Contains(_questItem))
         {

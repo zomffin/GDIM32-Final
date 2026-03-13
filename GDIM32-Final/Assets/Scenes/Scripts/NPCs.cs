@@ -115,12 +115,12 @@ public class NPCs : Item
         else if (_hasLineOfSightToPlayer || _scaredTimer > 0)
         {
             _state = NPCsState.Pursued;
-            Debug.Log("wahhhh");
+            //Debug.Log("wahhhh");
         }
         else if (_scaredTimer <= 0)
         {
             _state = NPCsState.Wandering;
-            Debug.Log("im normal");
+            //Debug.Log("im normal");
         }
     }
 
@@ -265,13 +265,13 @@ public class NPCs : Item
     {
         if (other.gameObject.CompareTag(_playerTag) && _detectTimer <= 0)
         {
-            Debug.Log("player entered sight");
+            //Debug.Log("player entered sight");
             _scaredTimer = _scaredCool; 
             _hasLineOfSightToPlayer = true;
         }
         else
         {
-            Debug.Log("dat is not the player");
+            //Debug.Log("dat is not the player");
             _hasLineOfSightToPlayer = false; 
         }
     }

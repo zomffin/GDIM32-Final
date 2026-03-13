@@ -36,6 +36,7 @@ public class DialogueManager : MonoBehaviour
 
             if (!_waitingForPlayerResponse && (Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKeyDown(KeyCode.E)))
             {
+                Debug.Log("current node:" + _currentNode.name);
                 AdvanceDialogue();
             }
             else if (!_runningDialogue)
@@ -94,13 +95,24 @@ public class DialogueManager : MonoBehaviour
         _currentNode = _currentNode._npcReplies[option];
         AdvanceDialogue();
     }
+    
     public void HandleItemRecieved(bool correctItem)
     {
+        Debug.Log("Got item recieved event");
         if (correctItem)
         {
             Debug.Log("I will say something else this time :3");
             _currentNode = _questCompleteNode;
+            _currentLine = 0;
 
         }
+        else
+        {
+            Debug.Log("YOU GFAILLLEDDD");
+            _currentNode = _questCompleteNode;
+            _currentLine = 0;
+        }
+        
+        Debug.Log("current node: " + _currentNode.name);
     }
 }

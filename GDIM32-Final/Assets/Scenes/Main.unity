@@ -6284,6 +6284,10 @@ PrefabInstance:
       value: Cauldron
       objectReference: {fileID: 0}
     - target: {fileID: 6636147616037231525, guid: 00e7b062a7d6f2048b280d7f8a861c63, type: 3}
+      propertyPath: _questItem
+      value: Mushroom
+      objectReference: {fileID: 0}
+    - target: {fileID: 6636147616037231525, guid: 00e7b062a7d6f2048b280d7f8a861c63, type: 3}
       propertyPath: _questText
       value: 
       objectReference: {fileID: 1453154278}
