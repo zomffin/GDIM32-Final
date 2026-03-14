@@ -31,13 +31,13 @@ public class CauldronController : MonoBehaviour
             Debug.Log("You don't have a quest");
             return;
         }
-        
+
         Debug.Log(_questItem + " is quest item, sending out event");
 
         if (collision.name.Contains(_questItem))
         {
             item?.Invoke(true);
-
+            _questText.text = "";
             Destroy(collision.gameObject);
         }
         else
