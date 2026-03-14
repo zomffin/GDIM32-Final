@@ -73,6 +73,7 @@ public class DialogueManager : MonoBehaviour
         {
             // if there are no NPC or player lines left, close dialogue UI
             EndDialogue();
+
         }
     }
 
@@ -80,7 +81,6 @@ public class DialogueManager : MonoBehaviour
     {
         _runningDialogue = false;
         _waitingForPlayerResponse = false;
-        _currentNode = _dialogueStartNode;
         _currentLine = 0;
         _dialogue.HideDialogue();
         _interactionPrompt.SetActive(false);
@@ -95,7 +95,7 @@ public class DialogueManager : MonoBehaviour
         _currentNode = _currentNode._npcReplies[option];
         AdvanceDialogue();
     }
-    
+
     public void HandleItemRecieved(bool correctItem)
     {
         Debug.Log("Got item recieved event");
@@ -112,7 +112,7 @@ public class DialogueManager : MonoBehaviour
             _currentNode = _questCompleteNode;
             _currentLine = 0;
         }
-        
+
         Debug.Log("current node: " + _currentNode.name);
     }
 }
