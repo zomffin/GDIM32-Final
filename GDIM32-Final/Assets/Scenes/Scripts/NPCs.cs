@@ -122,6 +122,9 @@ public class NPCs : Item
             _state = NPCsState.Wandering;
             //Debug.Log("im normal");
         }
+        
+        //Debug.Log("I'm in " + _state + "state");
+        
     }
 
     //     // suggested improvement: 
@@ -224,9 +227,11 @@ public class NPCs : Item
         // get vector pointing from duck to target point
         Vector3 me = new Vector3(transform.position.x, 0, transform.position.z);
         //_meToPlayer = (playerPos - me).normalized;
+        
+        
         _meAwayPlayer = (me - playerPos).normalized;
 
-        Quaternion targetRotate = Quaternion.AngleAxis(Random.Range(-30f, 30f), Vector3.up);
+        //Quaternion targetRotate = Quaternion.AngleAxis(Random.Range(-30f, 30f), Vector3.up);
 
         _runaway = transform.position + (_meAwayPlayer * 5); 
         

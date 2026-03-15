@@ -742,8 +742,8 @@ MonoBehaviour:
   _obstacleCheckDistance: 1
   _obstacleCheckRadius: 1
   _stopDistance: 0.5
-  _rotateSpeed: 0
-  _walkSpeed: 0.1
+  _rotateSpeed: 10
+  _walkSpeed: 1
   _lineOfSightMaxDistance: 0
   _raycastStartOffset: {x: 0, y: 0, z: 0}
   _rigidBody: {fileID: 2042368843068304329}

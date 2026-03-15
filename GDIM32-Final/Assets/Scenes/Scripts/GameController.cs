@@ -35,7 +35,11 @@ public class GameController : MonoBehaviour
         {
             Debug.Log("Cant find player");
         }
-
+        else
+        {
+            Debug.Log("Found player");
+        }
+        
     }
     // Start is called before the first frame update
     void Start()
