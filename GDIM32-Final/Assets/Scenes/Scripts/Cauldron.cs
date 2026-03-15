@@ -17,6 +17,9 @@ public class CauldronController : MonoBehaviour
     public delegate void newWitchQuest(string newWitch);
     public event newWitchQuest witchquest;
 
+    public delegate void WitchRecieved();
+    public event WitchRecieved witch;
+
 
     [SerializeField] private string _questItem;
     private bool _questComplete = true;
@@ -35,21 +38,27 @@ public class CauldronController : MonoBehaviour
         if (_questItem == null)
         {
             Debug.Log("You don't have a quest");
-            return;
+            if (collision.name.Contains(_questWitchActivated))
+            {
+                Debug.Log("You Winn!!!");
+                Destroy(collision.gameObject);
+                witch?.Invoke();
+            }
+            else
+            {
+                return;
+            }
         }
 
-        Debug.Log(_questItem + " is quest item, sending out event");
 
         if (collision.name.Contains(_questItem))
         {
             item?.Invoke(true);
             _questText.text = "";
             Destroy(collision.gameObject);
+            _questItem = null;
         }
-        if (collision.name.Contains(_questWitchActivated))
-        {
-            Debug.Log("You Winn!!!");
-        }
+
         else
         {
             item?.Invoke(false);

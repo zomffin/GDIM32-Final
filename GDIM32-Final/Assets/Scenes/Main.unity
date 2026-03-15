@@ -1870,8 +1870,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3894f1f9678044413a34c6f52c559b3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _itemcount: 0
-  _totalItemRequired: 3
   _questComplete: {fileID: 683321604}
 --- !u!4 &629208569
 Transform:
@@ -6386,6 +6384,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2722510722605829839, guid: 6a2d7e9efcae5c1469cbebee5fe72342, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2732443591765929428, guid: 6a2d7e9efcae5c1469cbebee5fe72342, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
