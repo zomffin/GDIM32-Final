@@ -640,6 +640,7 @@ GameObject:
   - component: {fileID: 3302172039782314805}
   - component: {fileID: 2042368843068304329}
   - component: {fileID: 9211424462603842410}
+  - component: {fileID: 1074222077268514201}
   m_Layer: 3
   m_Name: fish
   m_TagString: Untagged
@@ -748,6 +749,8 @@ MonoBehaviour:
   _rigidBody: {fileID: 2042368843068304329}
   _renderer: {fileID: 0}
   _animator: {fileID: 2749479810946920065}
+  _detectCool: 1
+  _scaredCool: 10
   ID: 1
 --- !u!54 &2042368843068304329
 Rigidbody:
@@ -799,6 +802,27 @@ CapsuleCollider:
   m_Height: 1.2895583
   m_Direction: 1
   m_Center: {x: -0.091692924, y: 0.100614965, z: -0.37276268}
+--- !u!65 &1074222077268514201
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7436764480090783005}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 4.5577183, y: 1, z: 6.9602566}
+  m_Center: {x: -0.0761919, y: 0, z: 2.3563166}
 --- !u!1 &7921716911593120794
 GameObject:
   m_ObjectHideFlags: 0
