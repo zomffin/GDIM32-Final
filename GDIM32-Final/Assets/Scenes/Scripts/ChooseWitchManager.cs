@@ -88,6 +88,7 @@ public class ChooseWitchManager : MonoBehaviour
         if (option == 0)
         {
             GameController.Instance.Cauldron.RecieveQuest("fish");
+            GameController.Instance.Cauldron.RecieveWitch("Chaser");
         }
 
         else

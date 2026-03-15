@@ -5,11 +5,11 @@ using UnityEngine;
 
 public class Witch : NPCs
 {
-    private bool _isScared = false; 
-    
+    private bool _isScared = false;
+
     private DialogueManager _dialogueManager;
-    
-    
+
+
     // Start is called before the first frame update
     private void Start()
     {
@@ -17,12 +17,13 @@ public class Witch : NPCs
         _rigidbody = this.GetComponent<Rigidbody>();
         _player = GameController.Instance.Player.transform;
 
-        
-        _detectTimer = 0; 
+
+        _detectTimer = 0;
         if (_animator == null)
         {
             _hasAnimator = false;
         }
+        GameController.Instance.Cauldron.witchquest += HandleWitchQuest;
     }
 
     // Update is called once per frame
@@ -34,9 +35,9 @@ public class Witch : NPCs
 
 
         _detectTimer -= Time.deltaTime;
-        _scaredTimer -= Time.deltaTime; 
+        _scaredTimer -= Time.deltaTime;
     }
-    
+
     private void FixedUpdate()
     {
         if (_pickedUp)
@@ -44,19 +45,19 @@ public class Witch : NPCs
             Move();
         }
     }
-    
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag(_playerTag) && _detectTimer <= 0)
         {
             Debug.Log("player entered sight");
-            _scaredTimer = _scaredCool; 
+            _scaredTimer = _scaredCool;
             _hasLineOfSightToPlayer = true;
         }
         else
         {
             Debug.Log("dat is not the player");
-            _hasLineOfSightToPlayer = false; 
+            _hasLineOfSightToPlayer = false;
         }
     }
 
@@ -64,10 +65,10 @@ public class Witch : NPCs
     {
         if (other.gameObject.CompareTag(_playerTag) && _detectTimer <= 0)
         {
-            _detectTimer = _detectCool; 
+            _detectTimer = _detectCool;
         }
     }
-    
+
     protected new void UpdateState()
     {
         if (!_isScared)
@@ -86,11 +87,11 @@ public class Witch : NPCs
         else if (_scaredTimer <= 0)
         {
             _state = NPCsState.Wandering;
-            _dialogueManager.enabled = false; 
+            _dialogueManager.enabled = false;
             Debug.Log("im normal");
         }
     }
-    
+
     protected new void RunState()
     {
         switch (_state)
@@ -121,7 +122,7 @@ public class Witch : NPCs
 
     private void RunIdleState()
     {
-        
+
     }
 
     public override bool Interact(GameObject target)
@@ -133,8 +134,17 @@ public class Witch : NPCs
         else
         {
             base.Interact(target);
-            return true; 
+            return true;
         }
     }
-    
+    public void HandleWitchQuest(string newWitch)
+    {
+        if (this.name.Contains(newWitch))
+        {
+            Debug.Log(newWitch + "is Scared");
+            _isScared = true;
+        }
+
+    }
+
 }
