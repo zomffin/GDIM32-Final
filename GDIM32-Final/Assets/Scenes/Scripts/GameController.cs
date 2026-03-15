@@ -9,8 +9,7 @@ public class GameController : MonoBehaviour
     public static GameController Instance { get; private set; }
     public CauldronController Cauldron { get; private set; }
     public GameObject Player { get; private set; }
-    [SerializeField] int _itemcount = 0;
-    [SerializeField] int _totalItemRequired = 2;
+
     [SerializeField] private TMP_Text _questComplete;
 
 
@@ -39,36 +38,36 @@ public class GameController : MonoBehaviour
         {
             Debug.Log("Found player");
         }
-        
+
     }
     // Start is called before the first frame update
     void Start()
     {
         Cauldron.item += HandleItemRecieved;
-
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (_itemcount >= _totalItemRequired)
-        {
-            SceneManager.LoadScene("WinScreen");
-        }
+        Cauldron.witchquest += HandleWitchQuest;
+        Cauldron.witch += HandleWitchRecieved;
 
     }
+
     public void HandleItemRecieved(bool correctItem)
     {
         if (correctItem)
         {
             _questComplete.text = "Quest Completed, Go back to Witch";
-            _itemcount++;
         }
         else
         {
-            _questComplete.text = "Watch its this one!!!";
+            _questComplete.text = "Not its this one!!!";
         }
-        Debug.Log(_itemcount);
+
     }
+    public void HandleWitchQuest(string newWitch)
+    {
+        _questComplete.text = "Witch Needed: ";
+    }
+    public void HandleWitchRecieved()
+    {
+        SceneManager.LoadScene("WinScreen");
+    }
+
 }
