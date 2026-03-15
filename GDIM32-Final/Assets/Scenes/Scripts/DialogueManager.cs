@@ -55,26 +55,47 @@ public class DialogueManager : MonoBehaviour
     private void AdvanceDialogue()
     {
         _runningDialogue = true;
+        if (_currentNode.name == "QuestComplete")
+        {
+            Debug.Log("On last dialogue");
+            if (_currentLine < _currentNode._lines.Length)
+            {
+                // if we still have NPC lines left, keep playing NPC lines
+                _dialogue.ShowDialogue(_currentNode._lines[_currentLine]);
+                _currentLine++;
+            }
+            else
+            {
+                GameController.Instance.Cauldron.ActivateWitch();
+            }
 
-        if (_currentLine < _currentNode._lines.Length)
-        {
-            // if we still have NPC lines left, keep playing NPC lines
-            _dialogue.ShowDialogue(_currentNode._lines[_currentLine]);
-            _currentLine++;
-        }
-        else if (_currentNode._playerReplyOptions != null && _currentNode._playerReplyOptions.Length > 0)
-        {
-            // show player dialogue options, if there are any
-            _waitingForPlayerResponse = true;
-            Cursor.lockState = CursorLockMode.Confined;
-            _dialogue.ShowPlayerOptions(_currentNode._playerReplyOptions);
+
         }
         else
         {
-            // if there are no NPC or player lines left, close dialogue UI
-            EndDialogue();
+            if (_currentLine < _currentNode._lines.Length)
+            {
+                // if we still have NPC lines left, keep playing NPC lines
+                _dialogue.ShowDialogue(_currentNode._lines[_currentLine]);
+                _currentLine++;
+            }
+            else if (_currentNode._playerReplyOptions != null && _currentNode._playerReplyOptions.Length > 0)
+            {
+                // show player dialogue options, if there are any
+                _waitingForPlayerResponse = true;
+                Cursor.lockState = CursorLockMode.Confined;
+                _dialogue.ShowPlayerOptions(_currentNode._playerReplyOptions);
+            }
+            else
+            {
+                // if there are no NPC or player lines left, close dialogue UI
+                EndDialogue();
+
+            }
 
         }
+
+
     }
 
     private void EndDialogue()

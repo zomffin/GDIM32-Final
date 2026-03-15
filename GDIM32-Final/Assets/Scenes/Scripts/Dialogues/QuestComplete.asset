@@ -14,6 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _lines:
   - OMG U did it I LOVE YOU!!!
+  - Okay We are Missing One last ingredient...
+  - See that witch over there?
+  - Get Them.
   _thoughtBubbleSprite: {fileID: 0}
   _playerReplyOptions: []
-  _npcReplies: []
+  _npcReplies:
+  - {fileID: 0}
