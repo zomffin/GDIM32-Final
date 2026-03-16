@@ -160,6 +160,7 @@ public class Witch : NPCs
         _playerHand.Drop();
         _pickedUp = false;
         _state = NPCsState.Pursued; 
+        _rigidbody.useGravity = true;
     }
     
     public void HandleWitchQuest(string newWitch)
