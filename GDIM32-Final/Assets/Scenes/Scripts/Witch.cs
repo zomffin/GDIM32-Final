@@ -5,9 +5,13 @@ using UnityEngine;
 
 public class Witch : NPCs
 {
+    [SerializeField] private float _maxEscapeTimer;
+    private float _escapeTime; 
     private bool _isScared = false;
 
     private DialogueManager _dialogueManager;
+
+    private Player _playerHand; 
 
 
     // Start is called before the first frame update
@@ -16,6 +20,7 @@ public class Witch : NPCs
         _dialogueManager = this.GetComponent<DialogueManager>();
         _rigidbody = this.GetComponent<Rigidbody>();
         _player = GameController.Instance.Player.transform;
+        _playerHand = GameController.Instance.Player.GetComponent<Player>();
 
 
         _detectTimer = 0;
@@ -35,7 +40,6 @@ public class Witch : NPCs
 
 
         _detectTimer -= Time.deltaTime;
-        _scaredTimer -= Time.deltaTime;
     }
 
     private void FixedUpdate()
@@ -83,6 +87,7 @@ public class Witch : NPCs
         else if (_pickedUp)
         {
             _state = NPCsState.PickedUp;
+            
         }
         else if (_hasLineOfSightToPlayer || _scaredTimer > 0)
         {
@@ -117,7 +122,13 @@ public class Witch : NPCs
                 {
                     _animator.SetBool("_IsCaught", true);
                 }
-                //implement fighting later
+                
+                _escapeTime -= Time.deltaTime;
+                if (_escapeTime <= 0)
+                {
+                    Escape(); 
+                }
+                
                 break;
             default:
                 Debug.LogError("unhandled state " + _state);
@@ -139,9 +150,18 @@ public class Witch : NPCs
         else
         {
             base.Interact(target);
+            _escapeTime = _maxEscapeTimer;
             return true;
         }
     }
+
+    public void Escape()
+    {
+        _playerHand.Drop();
+        _pickedUp = false;
+        _state = NPCsState.Pursued; 
+    }
+    
     public void HandleWitchQuest(string newWitch)
     {
         if (this.name.Contains(newWitch))

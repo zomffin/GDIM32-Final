@@ -113,7 +113,6 @@ public void PickUp()
 
 
         _detectTimer -= Time.deltaTime;
-        _scaredTimer -= Time.deltaTime; 
     }
 
     private void FixedUpdate()
@@ -242,6 +241,8 @@ public void PickUp()
 
     protected void RunPursueState()
     {
+        _scaredTimer -= Time.deltaTime;
+
         if (_hasAnimator)
         {
             _animator.SetBool("_IsCaught", false);

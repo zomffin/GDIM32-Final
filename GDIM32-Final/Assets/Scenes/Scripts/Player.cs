@@ -135,7 +135,7 @@ public class Player : MonoBehaviour
         float _mouseWheel = Input.GetAxisRaw("Mouse ScrollWheel");
         float _distanceToObject = Vector3.Distance(targetPos.transform.position, transform.position);
 
-        if (_mouseWheel != 0f)
+        if (_mouseWheel != 0f && _hasItem)
         {
             if (_mouseWheel < 0 && _distanceToObject > _minHoldDistance)
             {
@@ -233,6 +233,13 @@ public class Player : MonoBehaviour
         _itemHeld = null;
         _hasItem = false;
     }
+
+    public void Drop()
+    {
+        _itemHeld = null;
+        _hasItem = false;
+    }
+    
     public void HandleItemRecieved(bool item)
     {
         _itemHeld = null;
