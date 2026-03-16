@@ -15,6 +15,11 @@ public class DialogueUI : MonoBehaviour
     [SerializeField] private TMP_Text _option2;
     [SerializeField] private TMP_Text _option3;
 
+    void Start()
+    {
+        HideDialogue();
+    }
+
 
     public void ShowDialogue(string dialogue)
     {
