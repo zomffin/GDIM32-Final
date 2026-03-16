@@ -104,6 +104,11 @@ public class NPCs : Item
         {
             Move();
         }
+        
+        if (this.transform.position.y < -5)
+        {
+            Correct(); 
+        }
     }
 
     public void UpdateState()

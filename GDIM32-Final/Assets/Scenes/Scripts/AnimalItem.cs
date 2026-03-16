@@ -37,5 +37,10 @@ public class AnimalItem : NPCs
         {
             Move();
         }
+        
+        if (this.transform.position.y < -5)
+        {
+            Correct(); 
+        }
     }
 }

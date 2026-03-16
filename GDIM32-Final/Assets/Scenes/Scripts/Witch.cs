@@ -44,6 +44,11 @@ public class Witch : NPCs
         {
             Move();
         }
+        
+        if (this.transform.position.y < -5)
+        {
+            Correct(); 
+        }
     }
 
     private void OnTriggerEnter(Collider other)

@@ -31,6 +31,11 @@ public abstract class Item : MonoBehaviour
         {
             Move(); 
         }
+
+        if (this.transform.position.y < -5)
+        {
+            Correct(); 
+        }
     }
     
     // Base interact: Player clicks e at it once and it'll pick up. 
@@ -69,5 +74,10 @@ public abstract class Item : MonoBehaviour
         {
             _rigidbody.velocity = Vector3.zero; 
         }
+    }
+
+    protected void Correct()
+    {
+        this.transform.position = new Vector3(this.transform.position.x, 1, this.transform.position.z);
     }
 }

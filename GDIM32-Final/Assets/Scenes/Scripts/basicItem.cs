@@ -12,11 +12,16 @@ public class basicItem : Item
         _rigidbody.Sleep();
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (_pickedUp)
         {
             Move(); 
+        }
+        
+        if (this.transform.position.y < -5)
+        {
+            Correct(); 
         }
     }
 }
