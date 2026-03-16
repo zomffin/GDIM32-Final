@@ -9,7 +9,6 @@ using Vector3 = UnityEngine.Vector3;
 
 public class NPCs : Item
 {
-    //highkey just touched reids code 
     protected enum NPCsState
     {
         Idle, Wandering, Pursued, PickedUp
@@ -31,11 +30,14 @@ public class NPCs : Item
     [SerializeField] protected Rigidbody _rigidBody;
     [SerializeField] protected MeshRenderer _renderer;
     [SerializeField] protected Animator _animator;
+    [SerializeField] private AudioSource _audioSource;
+    [SerializeField] private AudioClip _grabSound;
 
     protected string _playerTag = "PlayerObj";
     protected NPCsState _state;
     protected float _wanderTime;
     protected Vector3 _wanderDirection;
+    public event Action OnPickedUp;
 
     [SerializeField] protected float _detectCool;
     protected float _detectTimer;
@@ -81,7 +83,28 @@ public class NPCs : Item
         }
     }
     
+  private void Grab()
+{
+    if (_audioSource != null && _grabSound != null)
+    {
+        _audioSource.PlayOneShot(_grabSound);
+    }
+}
 
+
+public void PickUp()
+{
+    if (_pickedUp) return; // prevents double pickup
+
+    _pickedUp = true;
+
+    Grab(); // play sound immediately
+
+    if (_hasAnimator)
+    {
+        _animator.SetBool("_IsCaught", true);
+    }
+}
     private void Update()
     {
 
