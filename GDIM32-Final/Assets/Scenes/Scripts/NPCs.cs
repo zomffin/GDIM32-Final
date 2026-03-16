@@ -231,12 +231,9 @@ public class NPCs : Item
 
         // get vector pointing from duck to target point
         Vector3 me = new Vector3(transform.position.x, 0, transform.position.z);
-        //_meToPlayer = (playerPos - me).normalized;
-        
         
         _meAwayPlayer = (me - playerPos).normalized;
 
-        //Quaternion targetRotate = Quaternion.AngleAxis(Random.Range(-30f, 30f), Vector3.up);
 
         _runaway = transform.position + (_meAwayPlayer * 5); 
         
@@ -293,25 +290,7 @@ public class NPCs : Item
             _detectTimer = _detectCool; 
         }
     }
-
-    /*private bool HasLineOfSightToPlayer()
-    {
-        _hasLineOfSightToPlayer = false;
-        RaycastHit hitInfo;
-        // fire a raycast pointing from the duck (_raycastStart) in the direction of the player (_raycastDir)
-        // and only going as far as _lineOfSightMaxDistance
-        if (Physics.BoxCast(_raycastStart, Vector3.one,_raycastDir, out hitInfo, transform.rotation,_lineOfSightMaxDistance, _lineOfSightLayers.value))
-        {
-            _raycastHitLocation = hitInfo.point;
-            // check if the object we hit was actually the player
-            if (hitInfo.collider.gameObject.tag.Equals(_playerTag))
-            {
-                _hasLineOfSightToPlayer = true;
-            }
-        }
-
-        return _hasLineOfSightToPlayer;
-    }*/
+    
 
     private void OnDrawGizmos()
     {
