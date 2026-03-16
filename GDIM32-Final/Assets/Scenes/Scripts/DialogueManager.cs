@@ -45,9 +45,10 @@ public class DialogueManager : MonoBehaviour
 
             }
         }
+        //Hello why is this calling every frame??
         else
         {
-            EndDialogue();
+            //EndDialogue();
         }
 
     }
@@ -100,6 +101,7 @@ public class DialogueManager : MonoBehaviour
 
     private void EndDialogue()
     {
+        Debug.Log("Dialog Ended");
         _runningDialogue = false;
         _waitingForPlayerResponse = false;
         _currentLine = 0;

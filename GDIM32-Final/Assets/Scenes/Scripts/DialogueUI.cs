@@ -18,6 +18,7 @@ public class DialogueUI : MonoBehaviour
 
     public void ShowDialogue(string dialogue)
     {
+        Debug.Log("Showing Dialoge");
         gameObject.SetActive(true);
 
         _npcDialogue.SetActive(true);
