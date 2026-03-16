@@ -51,6 +51,8 @@ public class NPCs : Item
     protected bool _hasLineOfSightToPlayer;
     protected Vector3 _meToPlayer;
     protected Vector3 _meAwayPlayer;
+
+
     protected Vector3 _runaway;
 
     
@@ -231,9 +233,15 @@ public class NPCs : Item
         
         _meAwayPlayer = (me - playerPos).normalized;
 
-
-        _runaway = transform.position + (_meAwayPlayer * 5); 
-        
+        // checks for obstacles, and gets a new direction if there are any
+        // limit attempts per frame so we don't crash program if duck gets stuck
+        int attempts = 0;
+        while (HasCloseObstacles() && attempts < 3)
+        {
+            Vector3 randomDir = UnityEngine.Random.insideUnitCircle;
+            _runaway = new Vector3(randomDir.x, 0.0f, randomDir.y);
+            attempts++;
+        }
         
         
         RotateTowards(_meAwayPlayer);
