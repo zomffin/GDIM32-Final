@@ -68,6 +68,7 @@ public class DialogueManager : MonoBehaviour
             else
             {
                 GameController.Instance.Cauldron.ActivateWitch();
+                EndDialogue();
             }
 
 
