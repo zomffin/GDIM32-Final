@@ -22,9 +22,11 @@ public class NPCs : Item
     [SerializeField] protected float _obstacleCheckDistance = 1.0f;
     [SerializeField] protected float _obstacleCheckRadius = 1.0f;
     [SerializeField] protected float _stopDistance = 0.5f;
+    
     [SerializeField] protected float _rotateSpeed;
     [SerializeField] protected float _walkSpeed;
-    [SerializeField] protected float _lineOfSightMaxDistance;
+    [SerializeField] protected float _runSpeed;
+    
     [SerializeField] protected Vector3 _raycastStartOffset;
     [SerializeField] protected Rigidbody _rigidBody;
     [SerializeField] protected MeshRenderer _renderer;
@@ -49,7 +51,7 @@ public class NPCs : Item
     protected bool _hasLineOfSightToPlayer;
     protected Vector3 _meToPlayer;
     protected Vector3 _meAwayPlayer;
-    protected Vector3 _runaway; 
+    protected Vector3 _runaway;
 
     
     
@@ -76,16 +78,7 @@ public class NPCs : Item
             return transform.TransformPoint(_raycastStartOffset);
         }
     }
-
-    //     // a vector pointing from _raycastStart to the player's center
-    private Vector3 _raycastDir
-    {
-        get
-        {
-            return (_player.position - _raycastStart).normalized;
-        }
-    }
-
+    
 
     private void Update()
     {
@@ -224,7 +217,11 @@ public class NPCs : Item
 
     protected void RunPursueState()
     {
-
+        if (_hasAnimator)
+        {
+            _animator.SetBool("_IsCaught", false);
+        }
+        
         // zero out y-axis because we only care about moving on x/z plane (ground)
         Vector3 playerPos = _player.position;
         playerPos = new Vector3(playerPos.x, 0, playerPos.z);
@@ -265,7 +262,7 @@ public class NPCs : Item
         meToTarget = meToTarget.normalized;
 
         // move in that direction
-        transform.Translate(meToTarget * _walkSpeed * Time.deltaTime, Space.World);
+        transform.Translate(meToTarget * _runSpeed * Time.deltaTime, Space.World);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -306,7 +303,6 @@ public class NPCs : Item
         {
             Gizmos.color = Color.red;
         }
-        Gizmos.DrawRay(_raycastStart, _raycastDir * _lineOfSightMaxDistance);
         if (_player != null) Gizmos.DrawSphere(_player.position, 0.1f);
         Gizmos.DrawSphere(_raycastHitLocation, 0.1f);
 
