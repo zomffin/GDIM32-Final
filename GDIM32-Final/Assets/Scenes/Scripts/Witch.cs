@@ -6,12 +6,12 @@ using UnityEngine;
 public class Witch : NPCs
 {
     [SerializeField] private float _maxEscapeTimer;
-    private float _escapeTime; 
+    private float _escapeTime;
     private bool _isScared = false;
 
     private DialogueManager _dialogueManager;
 
-    private Player _playerHand; 
+    private Player _playerHand;
 
 
     // Start is called before the first frame update
@@ -48,10 +48,10 @@ public class Witch : NPCs
         {
             Move();
         }
-        
+
         if (this.transform.position.y < -5)
         {
-            Correct(); 
+            Correct();
         }
     }
 
@@ -87,7 +87,7 @@ public class Witch : NPCs
         else if (_pickedUp)
         {
             _state = NPCsState.PickedUp;
-            
+
         }
         else if (_hasLineOfSightToPlayer || _scaredTimer > 0)
         {
@@ -122,13 +122,13 @@ public class Witch : NPCs
                 {
                     _animator.SetBool("_IsCaught", true);
                 }
-                
+
                 _escapeTime -= Time.deltaTime;
                 if (_escapeTime <= 0)
                 {
-                    Escape(); 
+                    Escape();
                 }
-                
+
                 break;
             default:
                 Debug.LogError("unhandled state " + _state);
@@ -159,16 +159,16 @@ public class Witch : NPCs
     {
         _playerHand.Drop();
         _pickedUp = false;
-        _state = NPCsState.Pursued; 
+        _state = NPCsState.Pursued;
         _rigidbody.useGravity = true;
     }
-    
+
     public void HandleWitchQuest(string newWitch)
     {
         if (this.name.Contains(newWitch))
         {
-            Debug.Log(newWitch + "is Scared");
             _isScared = true;
+            _dialogueManager.enabled = false;
         }
 
     }
