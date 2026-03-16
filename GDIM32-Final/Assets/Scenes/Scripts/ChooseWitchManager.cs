@@ -91,14 +91,15 @@ public class ChooseWitchManager : MonoBehaviour
             GameController.Instance.Cauldron.RecieveWitch("Chaser");
         }
 
-        else
+        else if (option == 1)
         {
-            Debug.Log("Quest Not implemented yet.");
-
+            Debug.Log("You Choose Chaser");
+            GameController.Instance.Cauldron.RecieveQuest("Mushroom");
+            GameController.Instance.Cauldron.RecieveWitch("BabyYaga");
 
         }
+        Debug.Log("This is Working");
         Cursor.lockState = CursorLockMode.Locked;
-
         EndDialogue();
     }
 }
