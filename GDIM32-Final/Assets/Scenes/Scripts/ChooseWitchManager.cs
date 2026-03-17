@@ -62,7 +62,7 @@ public class ChooseWitchManager : MonoBehaviour
         {
             // show player dialogue options, if there are any
             _waitingForPlayerResponse = true;
-            Cursor.lockState = CursorLockMode.None;
+            Cursor.lockState = CursorLockMode.Confined;
             _dialogue.ShowPlayerOptions(_currentNode._playerReplyOptions);
         }
         else
@@ -101,7 +101,7 @@ public class ChooseWitchManager : MonoBehaviour
 
         }
         Debug.Log("This is Working");
-        Cursor.lockState = CursorLockMode.None;
+        Cursor.lockState = CursorLockMode.Locked;
         EndDialogue();
         _chooseYourWitch.SetActive(false);
     }
