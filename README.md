@@ -115,4 +115,4 @@ Cite any open-source assets here. Put them in a LIST, and use correctly formatte
 - [Grab effect by Lucas_lesc](https://pixabay.com/sound-effects/film-special-effects-grab-clothes-foley-308655/)
 - [Geoffharvey creepy hollow music](https://pixabay.com/sound-effects/search/geoffharvey-creepy/)
 - [Cheer End SFX by storegraphic](https://pixabay.com/sound-effects/people-crowd-cheers-314919/)
-- [](https://hredbird.itch.io/simple-bird-sprites)
+- [Simple bird  by HRedBird](https://hredbird.itch.io/simple-bird-sprites)
