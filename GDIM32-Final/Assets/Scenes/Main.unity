@@ -872,6 +872,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a9c0a44ae43acf4ab377b2094d256e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &232780928
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 232780911}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e10f0dcad4ccc42278ed20a52921e3c0, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &238837257
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4651,6 +4672,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 496099013504013941, guid: c942ff9b8b199ca4db520b98edaafe36, type: 3}
       insertIndex: -1
       addedObject: {fileID: 232780921}
+    - targetCorrespondingSourceObject: {fileID: 496099013504013941, guid: c942ff9b8b199ca4db520b98edaafe36, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 232780928}
   m_SourcePrefab: {fileID: 100100000, guid: c942ff9b8b199ca4db520b98edaafe36, type: 3}
 --- !u!1001 &1298904177
 PrefabInstance:
@@ -6091,6 +6115,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a9c0a44ae43acf4ab377b2094d256e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &1871200174
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1871200161}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 811a3ae440cfa42bea93f5b8452fbc3d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &1888354536
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7369,6 +7414,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 496099013504013941, guid: c942ff9b8b199ca4db520b98edaafe36, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1871200167}
+    - targetCorrespondingSourceObject: {fileID: 496099013504013941, guid: c942ff9b8b199ca4db520b98edaafe36, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1871200174}
   m_SourcePrefab: {fileID: 100100000, guid: c942ff9b8b199ca4db520b98edaafe36, type: 3}
 --- !u!1 &2127212022
 GameObject:
