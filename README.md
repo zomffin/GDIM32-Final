@@ -71,7 +71,10 @@ Inheritance & Polymorphism Witch and AnimalItem class Both inherit from NPCs cla
 
 **Singleton pattern**
 
-We will use a singleton pattern GameController class to serve as a locator for the UI and Audio systems to find the player and subscribe to the player’s events (like moving, interacting with NPCs, etc.) Our quest system also uses GameController to access the Cauldron Class. Which allows other scripts to subscribe to Cauldron events such as ItemReceived item and WitchReceived witch. For example, this saves time a avoided the need to add to SerializeField one by one, making it easy for us who are less exsperienced to tweak gameplay, easy to navigate, and is a security measure against human error. Also the This also allows dialogue scripts such as ChooseYourWitchManager to send in player options by GameController.Instance.Cauldron.RecieveQuest("fish").
+We use the Singleton GameController class as a locator for other classes to access Player GameObject and Cauldron Class. This can be found in Witch, DialogueManager, and ChooseYourWitchManager class. For example, Witch and DialogueManager class uses _player = GameController.Instance.Player.transform to get Player position and use it to determine whether Player is getting close or in _interactionDistance. While ChooseYourWitchManager sends in player options for Cauldron to know what to detect by GameController.Instance.Cauldron.RecieveQuest("fish").  This avoided the need of adding a Cauldron Game Object to SerializeField one by one or using GetComponent<> in each script.
+
+We also use GameController class to allow other scripts to subscribe to Cauldron events such as ItemReceived item and WitchReceived witch. This can also be found in Player, GameController, Witch class.  For example, Player class uses GameController.Instance.Cauldron.item += HandleItemRecieved and HandleItemRecieved to change its status of _itemHeld to false. This avoided the need of adding a Cauldron Game Object to SerializeField one by one or using GetComponent<> in each script, which saved time and effort when multiple classes needed to respond to the same event called by a different class. The GameController acts as a mediator rather than tightly coupling systems.
+
 
 **Inheritance & Polymorphism**
 
