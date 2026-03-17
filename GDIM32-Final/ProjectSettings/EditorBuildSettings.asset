@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/CaughtChaserEnding.unity
     guid: cfc8159bf49264753a974bab02e8614f
+  - enabled: 1
+    path: Assets/Scenes/CaughtBabeYagaEnding.unity
+    guid: 71d28b37c710a4aaeb2db34c762caec1
   m_configObjects: {}
