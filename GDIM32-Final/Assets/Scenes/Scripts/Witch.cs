@@ -6,8 +6,13 @@ using UnityEngine;
 public class Witch : NPCs
 {
     [SerializeField] private float _maxEscapeTimer;
+    [SerializeField] private AudioSource _audioSource;
+
+[SerializeField] private AudioClip _grabSound;
+[SerializeField] private AudioClip _screamSound;
     private float _escapeTime;
-    private bool _isScared = false;
+    private NPCsState _previousState;
+        private bool _isScared = false;
 
     private DialogueManager _dialogueManager;
 
@@ -32,15 +37,20 @@ public class Witch : NPCs
     }
 
     // Update is called once per frame
-    private void Update()
+  private void Update()
+{
+    UpdateState();
+
+    if (_state != _previousState)
     {
-
-        UpdateState();
-        RunState();
-
-
-        _detectTimer -= Time.deltaTime;
+        OnStateChanged();
+        _previousState = _state;
     }
+
+    RunState();
+
+    _detectTimer -= Time.deltaTime;
+}
 
     private void FixedUpdate()
     {
@@ -102,7 +112,25 @@ public class Witch : NPCs
             Debug.Log("im normal");
         }
     }
+private void OnStateChanged()
+{
+    switch (_state)
+    {
+        case NPCsState.Pursued:
+            if (_audioSource && _screamSound)
+            {
+                _audioSource.PlayOneShot(_screamSound);
+            }
+            break;
 
+        case NPCsState.PickedUp:
+            if (_audioSource && _grabSound)
+            {
+                _audioSource.PlayOneShot(_grabSound);
+            }
+            break;
+    }
+}
 protected new void RunState()
 {
     switch (_state)
