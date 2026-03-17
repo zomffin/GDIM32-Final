@@ -55,10 +55,7 @@ public class GameController : MonoBehaviour
         {
             _questComplete.text = "Quest Completed, Go back to Witch";
         }
-        else
-        {
-            _questComplete.text = "Not its this one!!!";
-        }
+
 
     }
     public void HandleWitchQuest(string newWitch)
