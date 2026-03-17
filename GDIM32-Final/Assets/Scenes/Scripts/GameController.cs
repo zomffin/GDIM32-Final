@@ -11,6 +11,7 @@ public class GameController : MonoBehaviour
     public GameObject Player { get; private set; }
 
     [SerializeField] private TMP_Text _questComplete;
+    private string _catchingWitch;
 
 
     private void Awake()
@@ -60,11 +61,20 @@ public class GameController : MonoBehaviour
     }
     public void HandleWitchQuest(string newWitch)
     {
+        _catchingWitch = newWitch;
         _questComplete.text = "Witch Needed: ";
     }
     public void HandleWitchRecieved()
     {
-        SceneManager.LoadScene("WinScreen");
+        if (_catchingWitch == "Chaser")
+        {
+            SceneManager.LoadScene("CaughtChaserEnding");
+        }
+        else
+        {
+            SceneManager.LoadScene("CaughtBabeYagaEnding");
+        }
+
     }
 
 }

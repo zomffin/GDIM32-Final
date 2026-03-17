@@ -7296,7 +7296,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: fad905303253c400288046f0c05421c7, type: 2}
     - target: {fileID: 3043194713369061200, guid: c942ff9b8b199ca4db520b98edaafe36, type: 3}
       propertyPath: _interactionDistance
-      value: 5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5383002667706496884, guid: c942ff9b8b199ca4db520b98edaafe36, type: 3}
       propertyPath: m_LocalScale.x
