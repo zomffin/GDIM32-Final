@@ -1168,7 +1168,6 @@ MonoBehaviour:
   _playerMultiOptions: {fileID: 850187104}
   _option1: {fileID: 99106113}
   _option2: {fileID: 1581170084}
-  _option3: {fileID: 520624412}
 --- !u!114 &286679611
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7709,7 +7708,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1749704678517325797, guid: 00e7b062a7d6f2048b280d7f8a861c63, type: 3}
       propertyPath: m_TagString
-      value: Cauldron
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 2887510733785500741, guid: 00e7b062a7d6f2048b280d7f8a861c63, type: 3}
       propertyPath: m_Layer
