@@ -34,6 +34,9 @@ public class Witch : NPCs
             _hasAnimator = false;
         }
         GameController.Instance.Cauldron.witchquest += HandleWitchQuest;
+        
+        _rigidbody.constraints = RigidbodyConstraints.FreezePosition; 
+
     }
 
     // Update is called once per frame
@@ -97,19 +100,21 @@ public class Witch : NPCs
         else if (_pickedUp)
         {
             _state = NPCsState.PickedUp;
-
         }
         else if (_hasLineOfSightToPlayer || _scaredTimer > 0)
         {
             _state = NPCsState.Pursued;
             _dialogueManager.enabled = false;
-            Debug.Log("wahhhh");
+            _rigidbody.constraints = RigidbodyConstraints.None;
+            //Debug.Log("wahhhh");
         }
         else if (_scaredTimer <= 0)
         {
             _state = NPCsState.Wandering;
             _dialogueManager.enabled = false;
-            Debug.Log("im normal");
+            _rigidbody.constraints = RigidbodyConstraints.None;
+
+            //Debug.Log("im normal");
         }
     }
 private void OnStateChanged()
@@ -192,7 +197,6 @@ protected new void RunState()
 
     private void RunIdleState()
     {
-
     }
 
     public override bool Interact(GameObject target)
