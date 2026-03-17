@@ -64,7 +64,8 @@ Contribution:
 - Witches can also break out of your grasp, disable and enable the base item interaction according to quest progression, and have an idle state that makes dialogue easier
 - Made a lot of prefabs, decorating the terrain (had to fix colliders for the trees in particular...)
   
-### Team Member Name 2
+### Zoya McDonnell
+Contribution:
 Put your individual final Devlog here.
 ### Team Member Name 3
 Put your individual final Devlog here.
