@@ -13,7 +13,7 @@ public class DialogueUI : MonoBehaviour
     [SerializeField] private GameObject _playerMultiOptions;
     [SerializeField] private TMP_Text _option1;
     [SerializeField] private TMP_Text _option2;
-    [SerializeField] private TMP_Text _option3;
+
 
     void Start()
     {
