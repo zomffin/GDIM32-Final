@@ -87,9 +87,9 @@ Contribution:
   
 ### Zoya McDonnell
 Contribution:
-- Since the check-in, I have done the animation controllers and drawings for both witches in the states: idle, running, and struggling. 
+- Since the check-in, I have done the animation controllers between states Idle, running, and struggling ( transition bools being IsRunning and IsStruggling) and drawings for both witches in the states: idle, running, and struggling. 
 - I also redrew the menu art and music assets, redesigned and placed the UI, and replaced the buttons. 
-- I made terrain changes, edited the Witch script, and added animation and sound-effect transitions and functions for different witch states inherited from my old NPC script. 
+- I made terrain changes, edited the Witch + NPC scripts , and added animation and sound effects like _screamSound and _grabSound, and functions for different witch states inherited from my old NPC script. 
 - Added sprites to NPCs and drew them, and added a crosshair hand icon.
 
 ### Team Member Name 3
