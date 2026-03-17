@@ -55,17 +55,19 @@ public class DialogueUI : MonoBehaviour
         {
             _option2.transform.parent.gameObject.SetActive(false);
         }
-
-        if (options.Length >= 3)
-        {
-            _option3.transform.parent.gameObject.SetActive(true);
-            _option3.text = options[2];
-        }
-        else
-        {
-            _option3.transform.parent.gameObject.SetActive(false);
-        }
     }
+    /*
+            if (options.Length >= 3)
+            {
+                _option3.transform.parent.gameObject.SetActive(true);
+                _option3.text = options[2];
+            }
+            else
+            {
+                _option3.transform.parent.gameObject.SetActive(false);
+            }
+        }
+        */
 
 
     public void HideDialogue()
