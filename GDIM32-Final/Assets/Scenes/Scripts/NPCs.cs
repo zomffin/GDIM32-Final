@@ -184,10 +184,10 @@ public class NPCs : Item
 
     protected void RunWanderState()
     {
-        if (_hasAnimator)
-        {
-            _animator.SetBool("_IsCaught", false);
-        }
+       // if (_hasAnimator)
+        //{
+        //    _animator.SetBool("_IsCaught", false);
+        //}
 
         // switches to a new random direction every [_wanderTimeMax] seconds
         _wanderTime -= Time.deltaTime;
