@@ -12,7 +12,7 @@ public class Witch : NPCs
 [SerializeField] private AudioClip _screamSound;
     private float _escapeTime;
     private NPCsState _previousState;
-        private bool _isScared = false;
+    private bool _isScared = false;
 
     private DialogueManager _dialogueManager;
 
