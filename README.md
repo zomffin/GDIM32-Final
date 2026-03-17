@@ -52,12 +52,25 @@ The break-down activity gives a clear overview on how the system should conmmuni
 
 [Background Music by ilyas_ananas](https://ilyas-ananas.itch.io/background-music)
 
+
+[SCream effect by scottishman](https://pixabay.com/sound-effects/people-screaming-man-389826/)
+
+[grab effect by Lucas_lesc](https://pixabay.com/sound-effects/film-special-effects-grab-clothes-foley-308655/)
+
+[Geoffharvey creepy hollow music](https://pixabay.com/sound-effects/search/geoffharvey-creepy/)
+
+
+
 ## Final Submission
 ### Group Devlog
-Finite State Machine pattern
+**Finite State Machine pattern**
+
 NPCs will have states of Idle, Wandering, Pursued, and PickedUP, and each will display different movement behaviors and animation. They can be found mainly in the NPCs and Witch Class.
 It helps NPC switch between multiple states. For example, an NPC will switch from Wandering to Pursued when the player comes close, which instead of moving in random direction will run from the direction the player comes from, and back to Wandering if they run enough distance away from the player. The NPC will also switch to PickedUP state if caught by the player and back to  Pursued after being held for a while as a designed escape function. Having a Finite State Machine made it easy to add this many states and keep track of their conditions.
-Inheritance & Polymorphism
+
+
+**Inheritance & Polymorphism**
+
 Witch and AnimalItem class Both inherit from NPCs class, while NPCs and BasicItem inherit from abstract class Item. We use Inheritance because they all have shared functions such as pickUP() and Interact() that allow Player to pick them up by mouse or [E] to put them into the Cauldron. And Witch and AnimalItem both have different states of movement. Therefore, we implemented pickUP() and Interact() in Item class that allow all subclasses to share. Inheritance here saves us time by not needing to recode the same function for a new subclass. As for Polymorphism, we added a Finite State Machine and movement code because unlike BasicItems like Mushrooms NPCs like Witches and Fishes will move around and run away when players come too close. This allows us to add more complex interactions to NPCs and especially Witches while keeping the Item script simple and without causing errors such as making the Mushrooms move as well.
 
 
@@ -84,4 +97,9 @@ Cite any open-source assets here. Put them in a LIST, and use correctly formatte
 - [Mushroom models](https://assetstore.unity.com/packages/3d/vegetation/low-poly-mushrooms-pack-205460)
 - [Cliff models](https://assetstore.unity.com/packages/3d/environments/landscapes/low-poly-cliff-pack-67289)
 - [Animal models](https://assetstore.unity.com/packages/3d/characters/animals/quirky-series-free-animals-pack-178235)
+- [Cauldron model by our friend Jacob Ho](https://itch.io/profile/asphalt-asurada)
 - [Background Music by ilyas_ananas](https://ilyas-ananas.itch.io/background-music)
+- [Scream effect by scottishman](https://pixabay.com/sound-effects/people-screaming-man-389826/)
+- [Grab effect by Lucas_lesc](https://pixabay.com/sound-effects/film-special-effects-grab-clothes-foley-308655/)
+- [Geoffharvey creepy hollow music](https://pixabay.com/sound-effects/search/geoffharvey-creepy/)
+- [Cheer End SFX by storegraphic](https://pixabay.com/sound-effects/people-crowd-cheers-314919/)

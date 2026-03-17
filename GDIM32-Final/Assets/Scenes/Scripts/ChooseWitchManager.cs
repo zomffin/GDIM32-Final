@@ -9,6 +9,7 @@ public class ChooseWitchManager : MonoBehaviour
     [SerializeField] private float _interactionDistance = 2.0f;
     [SerializeField] private DialogueUI _dialogue;
     [SerializeField] private DialogueNode _dialogueStartNode;
+    [SerializeField] private GameObject _chooseYourWitch;
 
     private DialogueNode _currentNode;
     private int _currentLine = 0;
@@ -87,6 +88,7 @@ public class ChooseWitchManager : MonoBehaviour
 
         if (option == 0)
         {
+            Debug.Log("0");
             GameController.Instance.Cauldron.RecieveQuest("fish");
             GameController.Instance.Cauldron.RecieveWitch("Chaser");
         }
@@ -101,5 +103,6 @@ public class ChooseWitchManager : MonoBehaviour
         Debug.Log("This is Working");
         Cursor.lockState = CursorLockMode.Locked;
         EndDialogue();
+        _chooseYourWitch.SetActive(false);
     }
 }
