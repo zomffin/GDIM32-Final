@@ -92,6 +92,7 @@ public class Witch : NPCs
         else if (_hasLineOfSightToPlayer || _scaredTimer > 0)
         {
             _state = NPCsState.Pursued;
+            _dialogueManager.enabled = false;
             Debug.Log("wahhhh");
         }
         else if (_scaredTimer <= 0)
@@ -168,7 +169,6 @@ public class Witch : NPCs
         if (this.name.Contains(newWitch))
         {
             _isScared = true;
-            _dialogueManager.enabled = false;
         }
 
     }
