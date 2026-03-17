@@ -4644,6 +4644,10 @@ PrefabInstance:
       propertyPath: _audioSource
       value: 
       objectReference: {fileID: 1020933785}
+    - target: {fileID: 7011321628518048235, guid: c942ff9b8b199ca4db520b98edaafe36, type: 3}
+      propertyPath: _screamSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 9c09a461a0e5f445f92f8e17c653844b, type: 3}
     - target: {fileID: 8019884263570698059, guid: c942ff9b8b199ca4db520b98edaafe36, type: 3}
       propertyPath: m_Height
       value: 22.692648
@@ -7394,6 +7398,10 @@ PrefabInstance:
       propertyPath: _audioSource
       value: 
       objectReference: {fileID: 1020933785}
+    - target: {fileID: 7011321628518048235, guid: c942ff9b8b199ca4db520b98edaafe36, type: 3}
+      propertyPath: _screamSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 9c09a461a0e5f445f92f8e17c653844b, type: 3}
     - target: {fileID: 8019884263570698059, guid: c942ff9b8b199ca4db520b98edaafe36, type: 3}
       propertyPath: m_Height
       value: 18.550821

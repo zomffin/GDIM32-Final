@@ -30,8 +30,7 @@ public class NPCs : Item
     [SerializeField] protected Rigidbody _rigidBody;
     [SerializeField] protected MeshRenderer _renderer;
     [SerializeField] protected Animator _animator;
-    [SerializeField] private AudioSource _audioSource;
-    [SerializeField] private AudioClip _grabSound;
+  
 
  
 
