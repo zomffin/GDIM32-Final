@@ -4633,6 +4633,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7011321628518048235, guid: c942ff9b8b199ca4db520b98edaafe36, type: 3}
+      propertyPath: _animator
+      value: 
+      objectReference: {fileID: 232780928}
+    - target: {fileID: 7011321628518048235, guid: c942ff9b8b199ca4db520b98edaafe36, type: 3}
       propertyPath: _grabSound
       value: 
       objectReference: {fileID: 8300000, guid: 787915772a5d14dcfa6958b2794a1465, type: 3}
@@ -7378,6 +7382,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7011321628518048235, guid: c942ff9b8b199ca4db520b98edaafe36, type: 3}
+      propertyPath: _animator
+      value: 
+      objectReference: {fileID: 1871200174}
     - target: {fileID: 7011321628518048235, guid: c942ff9b8b199ca4db520b98edaafe36, type: 3}
       propertyPath: _grabSound
       value: 

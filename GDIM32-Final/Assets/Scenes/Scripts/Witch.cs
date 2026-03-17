@@ -103,39 +103,64 @@ public class Witch : NPCs
         }
     }
 
-    protected new void RunState()
+protected new void RunState()
+{
+    switch (_state)
     {
-        switch (_state)
-        {
-            case NPCsState.Idle:
-                RunIdleState();
-                break;
-            case NPCsState.Wandering:
-                RunWanderState();
-                break;
+        case NPCsState.Idle:
 
-            case NPCsState.Pursued:
-                RunPursueState();
-                break;
+            if (_hasAnimator)
+            {
+                _animator.SetBool("IsRunning", false);
+                _animator.SetBool("IsStruggling", false);
+            }
 
-            case NPCsState.PickedUp:
-                if (_hasAnimator)
-                {
-                    _animator.SetBool("_IsCaught", true);
-                }
+            RunIdleState();
+            break;
 
-                _escapeTime -= Time.deltaTime;
-                if (_escapeTime <= 0)
-                {
-                    Escape();
-                }
+        case NPCsState.Wandering:
 
-                break;
-            default:
-                Debug.LogError("unhandled state " + _state);
-                break;
-        }
+            if (_hasAnimator)
+            {
+                _animator.SetBool("IsRunning", true);
+                _animator.SetBool("IsStruggling", false);
+            }
+
+            RunWanderState();
+            break;
+
+        case NPCsState.Pursued:
+
+            if (_hasAnimator)
+            {
+                _animator.SetBool("IsRunning", true);
+                _animator.SetBool("IsStruggling", false);
+            }
+
+            RunPursueState();
+            break;
+
+        case NPCsState.PickedUp:
+
+            if (_hasAnimator)
+            {
+                _animator.SetBool("IsRunning", false);
+                _animator.SetBool("IsStruggling", true);
+            }
+
+            _escapeTime -= Time.deltaTime;
+            if (_escapeTime <= 0)
+            {
+                Escape();
+            }
+
+            break;
+
+        default:
+            Debug.LogError("unhandled state " + _state);
+            break;
     }
+}
 
     private void RunIdleState()
     {
