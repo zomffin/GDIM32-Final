@@ -27,8 +27,7 @@ public class NPCs : Item
     [SerializeField] protected float _runSpeed;
     
     [SerializeField] protected Vector3 _raycastStartOffset;
-    [SerializeField] protected Rigidbody _rigidBody;
-    [SerializeField] protected MeshRenderer _renderer;
+
     [SerializeField] protected Animator _animator;
   
 
@@ -185,9 +184,9 @@ public class NPCs : Item
     protected void RunWanderState()
     {
        // if (_hasAnimator)
-        //{
+     //  {
         //    _animator.SetBool("_IsCaught", false);
-        //}
+      //  }
 
         // switches to a new random direction every [_wanderTimeMax] seconds
         _wanderTime -= Time.deltaTime;
