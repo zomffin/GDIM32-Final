@@ -65,13 +65,20 @@ The break-down activity gives a clear overview on how the system should conmmuni
 ### Group Devlog
 **Finite State Machine pattern**
 
-NPCs will have states of Idle, Wandering, Pursued, and PickedUP, and each will display different movement behaviors and animation. They can be found mainly in the NPCs and Witch Class.
-It helps NPC switch between multiple states. For example, an NPC will switch from Wandering to Pursued when the player comes close, which instead of moving in random direction will run from the direction the player comes from, and back to Wandering if they run enough distance away from the player. The NPC will also switch to PickedUP state if caught by the player and back to  Pursued after being held for a while as a designed escape function. Having a Finite State Machine made it easy to add this many states and keep track of their conditions.
+ NPCs will have states of Idle, Wandering, Pursued, and PickedUP, and each will display different movement behaviors and animation. They can be found mainly in the NPCs and Witch Class. It helps NPC switch between multiple states. For example, an NPC will switch from Wandering to Pursued when the player comes close, which instead of moving in random direction will run from the direction the player comes from, and back to Wandering if they run enough distance away from the player. The NPC will also switch to PickedUP state if caught by the player and back to Pursued after being held for a while as a designed escape function. Having a Finite State Machine made it easy to add this many states and keep track of their conditions. While being easy to read in addtion to easy tyo add animation trnastions to and soundeffects for different states. 
+
+Inheritance & Polymorphism Witch and AnimalItem class Both inherit from NPCs class, while NPCs and BasicItem inherit from abstract class Item. We use Inheritance because they all have shared functions such as pickUP() and Interact() that allow Player to pick them up by mouse or [E] to put them into the Cauldron. And Witch and AnimalItem both have different states of movement. Therefore, we implemented pickUP() and Interact() in Item class that allow all subclasses to share. Inheritance here saves us time by not needing to recode the same function for a new subclass. As for Polymorphism, we added a Finite State Machine and movement code because unlike BasicItems like Mushrooms NPCs like Witches and Fishes will move around and run away when players come too close. This allows us to add more complex interactions to NPCs and especially Witches while keeping the Item script simple and without causing errors such as making the Mushrooms move as well.
+
+**Singleton pattern**
+
+We use the Singleton GameController class as a locator for other classes to access Player GameObject and Cauldron Class. This can be found in Witch, DialogueManager, and ChooseYourWitchManager class. For example, Witch and DialogueManager class uses _player = GameController.Instance.Player.transform to get Player position and use it to determine whether Player is getting close or in _interactionDistance. While ChooseYourWitchManager sends in player options for Cauldron to know what to detect by GameController.Instance.Cauldron.RecieveQuest("fish").  This avoided the need of adding a Cauldron Game Object to SerializeField one by one or using GetComponent<> in each script.
+
+We also use GameController class to allow other scripts to subscribe to Cauldron events such as ItemReceived item and WitchReceived witch. This can also be found in Player, GameController, Witch class.  For example, Player class uses GameController.Instance.Cauldron.item += HandleItemRecieved and HandleItemRecieved to change its status of _itemHeld to false. This avoided the need of adding a Cauldron Game Object to SerializeField one by one or using GetComponent<> in each script, which saved time and effort when multiple classes needed to respond to the same event called by a different class. The GameController acts as a mediator rather than tightly coupling systems.
 
 
 **Inheritance & Polymorphism**
 
-Witch and AnimalItem class Both inherit from NPCs class, while NPCs and BasicItem inherit from abstract class Item. We use Inheritance because they all have shared functions such as pickUP() and Interact() that allow Player to pick them up by mouse or [E] to put them into the Cauldron. And Witch and AnimalItem both have different states of movement. Therefore, we implemented pickUP() and Interact() in Item class that allow all subclasses to share. Inheritance here saves us time by not needing to recode the same function for a new subclass. As for Polymorphism, we added a Finite State Machine and movement code because unlike BasicItems like Mushrooms NPCs like Witches and Fishes will move around and run away when players come too close. This allows us to add more complex interactions to NPCs and especially Witches while keeping the Item script simple and without causing errors such as making the Mushrooms move as well.
+Witch and AnimalItem class Both inherit from NPCs class,  NPCs and BasicItem inherit from abstract class Item. We use Inheritance because they all have shared functions, such as pickUP() and Interact() that allow Player to pick them up by mouse or [E] to put them into the Cauldron. And Witch and AnimalItem both have different states of movement. Therefore, we implemented pickUP() and Interact() in the Item class that allow all subclasses to share. Inheritance here saves us time by not needing to recode the same function for a new subclass. As for Polymorphism, we added a Finite State Machine and movement code because, unlike BasicItems like Mushrooms NPCs like Witches and Fishes will move around and run away when players come too close. This allows us to add more complex interactions to NPCs and especially Witches while keeping the Item script simple and without causing errors such as making the Mushrooms move as well and being able to give witches unique animations.
 
 
 ### Isabel Matsuno
@@ -83,13 +90,18 @@ Contribution:
   
 ### Zoya McDonnell
 Contribution:
-- Since the check-in, I have done the animation controllers and drawings for both witches in the states: idle, running, and struggling. 
+- Since the check-in, I have done the animation controllers between states Idle, running, and struggling ( transition bools being IsRunning and IsStruggling) and drawings for both witches in the states: idle, running, and struggling. 
 - I also redrew the menu art and music assets, redesigned and placed the UI, and replaced the buttons. 
-- I made terrain changes, edited the Witch script, and added animation and sound-effect transitions and functions for different witch states inherited from my old NPC script. 
+- I made terrain changes, edited the Witch + NPC scripts , and added animation and sound effects like _screamSound and _grabSound, and functions for different witch states inherited from my old NPC script. 
 - Added sprites to NPCs and drew them, and added a crosshair hand icon.
 
-### Team Member Name 3
-Put your individual final Devlog here.
+### Kristin Zhang
+Contribution:
+- Finish Up Quest system, Player will recieve 2 different quest depending on romance choice.
+- Added Dialogue system
+- Added ChooseYourWitchManager script and GameOject which uses dialogue and player choice
+- Complete Quest will trigger new dialogue branch
+
 
 ## Open-Source Assets
 Cite any open-source assets here. Put them in a LIST, and use correctly formatted LINKS.
@@ -103,3 +115,4 @@ Cite any open-source assets here. Put them in a LIST, and use correctly formatte
 - [Grab effect by Lucas_lesc](https://pixabay.com/sound-effects/film-special-effects-grab-clothes-foley-308655/)
 - [Geoffharvey creepy hollow music](https://pixabay.com/sound-effects/search/geoffharvey-creepy/)
 - [Cheer End SFX by storegraphic](https://pixabay.com/sound-effects/people-crowd-cheers-314919/)
+- [Simple bird  by HRedBird](https://hredbird.itch.io/simple-bird-sprites)

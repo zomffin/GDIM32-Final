@@ -17,12 +17,7 @@ public class GameController : MonoBehaviour
     private void Awake()
     {
 
-        //This is not working it does not delete whywhwywhywhwywhy
-        if (Instance != null && Instance != this)
-        {
-            Destroy(this);
-            return;
-        }
+      
 
         Instance = this;
 

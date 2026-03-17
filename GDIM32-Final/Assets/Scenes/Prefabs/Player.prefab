@@ -288,7 +288,7 @@ MonoBehaviour:
     m_Bits: 8
   targetPos: {fileID: 4943113616637304458}
   _maxHoldDistance: 5
-  _minHoldDistance: 1
+  _minHoldDistance: 1.5
   _holdSensitivity: 1
   _throwForce: 5
   _clockUI: {fileID: 0}
