@@ -95,8 +95,13 @@ Contribution:
 - I made terrain changes, edited the Witch + NPC scripts , and added animation and sound effects like _screamSound and _grabSound, and functions for different witch states inherited from my old NPC script. 
 - Added sprites to NPCs and drew them, and added a crosshair hand icon.
 
-### Team Member Name 3
-Put your individual final Devlog here.
+### Kristin Zhang
+Contribution:
+- Finish Up Quest system, Player will recieve 2 different quest depending on romance choice.
+- Added Dialogue system
+- Added ChooseYourWitchManager script and GameOject which uses dialogue and player choice
+- Complete Quest will trigger new dialogue branch
+
 
 ## Open-Source Assets
 Cite any open-source assets here. Put them in a LIST, and use correctly formatted LINKS.
