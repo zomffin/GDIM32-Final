@@ -22,7 +22,9 @@ Contribution:
 
 Proposal Reflection: 
 - Proposal wasn't quite detailed enough. I usually end up having to figure out how different systems should "talk" to one another while I'm in the midst of coding. The proposal helps me think about it ahead of time, but I usually don't reference it that much while coding.
-- I did generally check it to make sure we were adding the right things and thinking about how the final product should be working on the player side. 
+- I did generally check it to make sure we were adding the right things and thinking about how the final product should be working on the player side.
+
+
 ### Team Member Kristin Zhang
 Contribute to the project at this stage:
 - Build a Basic Quest System that detects we player bring an item to the Cauldron and sets the winning condition. Setting the GameController Class as singleton and game manager and the Cauldron Class as event sender. Used SceneManager to switch to win screen once the _itemCount >= _totalItemRequired condition is met.
@@ -55,8 +57,13 @@ The break-down activity gives a clear overview on how the system should conmmuni
 Put your group Devlog here.
 
 
-### Team Member Name 1
-Put your individual final Devlog here.
+### Isabel Matsuno
+Contribution:
+- I built more utility into the different children of the item class, in particular the NPC and Witch scripts.
+- I tweaked some of the original code taken from one of the demos to make it so they run away from the player when they spot them
+- Witches can also break out of your grasp, disable and enable the base item interaction according to quest progression, and have an idle state that makes dialogue easier
+- Made a lot of prefabs, decorating the terrain (had to fix colliders for the trees in particular...)
+  
 ### Team Member Name 2
 Put your individual final Devlog here.
 ### Team Member Name 3
