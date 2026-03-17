@@ -52,6 +52,15 @@ The break-down activity gives a clear overview on how the system should conmmuni
 
 [Background Music by ilyas_ananas](https://ilyas-ananas.itch.io/background-music)
 
+
+[SCream effect by scottishman](https://pixabay.com/sound-effects/people-screaming-man-389826/)
+
+[grab effect by Lucas_lesc](https://pixabay.com/sound-effects/film-special-effects-grab-clothes-foley-308655/)
+
+[Geoffharvey creepy hollow music](https://pixabay.com/sound-effects/search/geoffharvey-creepy/)
+
+
+
 ## Final Submission
 ### Group Devlog
 Finite State Machine pattern
