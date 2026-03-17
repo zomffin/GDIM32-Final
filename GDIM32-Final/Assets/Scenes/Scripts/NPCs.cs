@@ -33,6 +33,8 @@ public class NPCs : Item
     [SerializeField] private AudioSource _audioSource;
     [SerializeField] private AudioClip _grabSound;
 
+ 
+
     protected string _playerTag = "PlayerObj";
     protected NPCsState _state;
     protected float _wanderTime;
@@ -83,28 +85,28 @@ public class NPCs : Item
         }
     }
     
-  private void Grab()
-{
-    if (_audioSource != null && _grabSound != null)
-    {
-        _audioSource.PlayOneShot(_grabSound);
-    }
-}
+//   private void Grab()
+// {
+//     if (_audioSource != null && _grabSound != null)
+//     {
+//         _audioSource.PlayOneShot(_grabSound);
+//     }
+// }
 
 
-public void PickUp()
-{
-    if (_pickedUp) return; // prevents double pickup
+// public void PickUp()
+// {
+//     if (_pickedUp) return; 
 
-    _pickedUp = true;
+//     _pickedUp = true;
 
-    Grab(); // play sound immediately
+//     Grab(); // play sound immediately
 
-    if (_hasAnimator)
-    {
-        _animator.SetBool("_IsCaught", true);
-    }
-}
+//     if (_hasAnimator)
+//     {
+//         _animator.SetBool("_IsCaught", true);
+//     }
+// }
     private void Update()
     {
 
