@@ -39,16 +39,11 @@ public class DialogueManager : MonoBehaviour
 
                 AdvanceDialogue();
             }
-            else if (!_runningDialogue)
-            {
-
-
-            }
         }
-        //Hello why is this calling every frame??
         else
         {
-            //EndDialogue();
+            _interactionPrompt.SetActive(false);
+
         }
 
     }

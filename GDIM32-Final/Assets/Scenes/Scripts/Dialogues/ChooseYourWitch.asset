@@ -13,9 +13,11 @@ MonoBehaviour:
   m_Name: ChooseYourWitch
   m_EditorClassIdentifier: 
   _lines:
-  - Choose a magic being to rizz with
-  - This magic will make you rizzy once you complete their quests
-  - You can only choose one person.
+  - Hii.
+  - Came to make soup for someone?
+  - I know their favorite recipe.
+  - Just tell me who are you making soup for.
+  - Everything you need will appear on the note.
   _thoughtBubbleSprite: {fileID: 0}
   _playerReplyOptions:
   - Baby Yaga

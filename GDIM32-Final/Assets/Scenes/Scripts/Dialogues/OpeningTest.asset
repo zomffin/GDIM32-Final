@@ -13,9 +13,13 @@ MonoBehaviour:
   m_Name: OpeningTest
   m_EditorClassIdentifier: 
   _lines:
-  - HIii
-  - Nice to meet you
-  - You look Hot..
+  - Hey darling
+  - Babe Yaga here
+  - You look suspicious darling
   _thoughtBubbleSprite: {fileID: 0}
-  _playerReplyOptions: []
-  _npcReplies: []
+  _playerReplyOptions:
+  - Nothing!! hehehe
+  - Are you free tonight...wana get dinner together?
+  _npcReplies:
+  - {fileID: 11400000, guid: 51109b15ee74e4516984a095aca821a0, type: 2}
+  - {fileID: 11400000, guid: cc4c068eb710a4cefb40bab8410bdbac, type: 2}
